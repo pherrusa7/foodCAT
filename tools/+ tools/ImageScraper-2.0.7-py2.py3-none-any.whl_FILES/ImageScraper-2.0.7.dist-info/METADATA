@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: ImageScraper
+Version: 2.0.7
+Summary: A simple image scraper to download all images from a given url
+Home-page: https://github.com/sananth12/ImageScraper/
+Author: Anantha Natarajan S
+Author-email: sananthanatarajan12@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Topic :: Utilities
+Requires-Dist: lxml (>=3.2.3)
+Requires-Dist: requests (>=2.1.0)
+Requires-Dist: future (>=0.14.3)
+Requires-Dist: setproctitle (>=1.1.8)
+Requires-Dist: SimplePool
+
+UNKNOWN
+
+

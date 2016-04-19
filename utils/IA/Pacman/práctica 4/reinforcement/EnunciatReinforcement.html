@@ -1,0 +1,184 @@
+<div style="text-align: center"><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; letter-spacing: normal; white-space: normal; orphans: 2; color: rgb(51,51,51); font-size: 16px; font-weight: normal; word-spacing: 0px" class="Apple-style-span"> 
+  <h2 style="border-bottom: rgb(0,0,0) 1px solid; padding-bottom: 8px; line-height: 26px; margin: 0px 0px 0px -20px; padding-left: 0px; padding-right: 75px; color: rgb(50,91,157); font-size: 26px; font-weight: 600; padding-top: 10px">Práctica 4: Aprendizaje por refuerzo</h2></span></div><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; letter-spacing: normal; white-space: normal; orphans: 2; color: rgb(51,51,51); font-size: 16px; font-weight: normal; word-spacing: 0px" class="Apple-style-span"> 
+<blockquote style="padding-left: 10px"><center><img title="capsuleClassic layout" border="0" hspace="0" alt="capsuleClassic layout" src="capsule.png" width="246" height="89" /></center> 
+  <p style="line-height: 19px"><cite></cite></p><center>Pacman busca recompensa.<br />¿Debe comer o debe correr?<br />Para resolver sus dudas, él debe q-aprender.</center><center></center> 
+  <div align="left"><span style="font-weight: bold">Dates d'entrega: </span><br /><br /> Grup B (Dimarts de 15 a 17): <span style="font-style: italic; color: red">Entregueu fins <span style="font-weight: bold"> dia 18/12/2012</span> </span><br />Grup C (Dimecres de 19 a 21):<span style="font-style: italic; color: red"> Entregueu fins <span style="font-weight: bold"> dia 19/12/2012 </span></span><br />Grup D (Dijous de 19 a 21): <span style="font-style: italic; color: red">Entregueu fins <span style="font-weight: bold"> dia 20/12/2012 </span></span><br /> </div></blockquote> 
+<h3 style="border-bottom: rgb(82,123,189) 1px solid; line-height: 16px; margin-top: 30px; color: rgb(50,91,157); font-size: 18px; font-weight: 600">Introducción</h3> 
+<p style="line-height: 19px">En esta práctica implementaréis la iteración de valores y el q-aprendizaje. Probaréis vuestros agentes primero en el mundo rejilla (Gridworld) y después los aplicaréis a un controlador de robot simulado (Crawler) y al Pacman.</p> 
+<p style="line-height: 19px">La práctica contiene 9 cuestiones, 7 obligatorias y 2 opcionales:<br /></p></span>
+<ul> 
+  <li><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; letter-spacing: normal; white-space: normal; orphans: 2; color: rgb(51,51,51); font-size: 16px; font-weight: normal; word-spacing: 0px" class="Apple-style-span"> 
+    <p style="line-height: 19px">Cuestiones obligatorias (10 puntos): 1 (2,5p), 2 (0,5p), 3 (2p), 4 (2p), 5 (1p), 8 (0,5p), 9 (1,5p)</p></span></li> 
+  <li><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; letter-spacing: normal; white-space: normal; orphans: 2; color: rgb(51,51,51); font-size: 16px; font-weight: normal; word-spacing: 0px" class="Apple-style-span"> 
+    <p style="line-height: 19px">Cuestiones opcionales (1 puntos): 6 (0.5p), 7 (0.5p)</p></span></li> 
+</ul><span style="line-height: normal; widows: 2; text-transform: none; font-variant: normal; font-style: normal; text-indent: 0px; letter-spacing: normal; white-space: normal; orphans: 2; color: rgb(51,51,51); font-size: 16px; font-weight: normal; word-spacing: 0px" class="Apple-style-span"> 
+<p style="line-height: 19px">De manera que si completáis las obligatorias podéis obtener hasta 10 puntos, y si además abordáis las opcionales podéis llegar a 11 puntos.</p> 
+<p style="line-height: 19px"> Es importante que expliquéis en la memoria detalladamente qué habéis hecho, cómo y porqué en cada cuestión para puntuarla positivamente.<br /></p> 
+<p style="line-height: 19px">El código para este proyecto contiene los siguientes archivos, que están disponibles en <a href="http://campusvirtual.ub.edu/file.php/38534/curs12-13/laboratori/reinforcement.zip">aquí</a>:</p> 
+<h5 style="color: rgb(50,91,157); font-size: 16px; font-weight: 600"><b>Ficheros que editaréis</b></h5> 
+<table border="0" cellpadding="10"><tbody> 
+  <tr> 
+    <td><a href="docs/valueIterationAgents.html"><code>valueIterationAgents.py</code></a> 
+    </td> 
+    <td>Un agente que implementa iteración de valores para resolver PDMs conocidos. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/qlearningAgents.html"><code>qlearningAgents.py</code></a> 
+    </td> 
+    <td>Agentes que implementan Q-aprendizaje para Gridworld, Crawler y Pacman 
+    </td> 
+  </tr></tbody> 
+</table> 
+<h5 style="color: rgb(50,91,157); font-size: 16px; font-weight: 600"><b>Ficheros que debéis leer pero NO editar</b></h5> 
+<table border="0" cellpadding="10"><tbody> 
+  <tr> 
+    <td><a href="docs/mdp.html"><code>mdp.py</code></a> 
+    </td> 
+    <td>Define métodos generales sobre PDMs. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/learningAgents.html"><code>learningAgents.py</code></a> 
+    </td> 
+    <td>Define la clase base <code>ValueEstimationAgent</code> y<code>QLearningAgent</code>, que vuestros agentes extenderán. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/util.html"><code>util.py</code></a> 
+    </td> 
+    <td>Utilidades, incluyendo <code>util.Counter</code>, que son particularmente útiles para q-aprendedores. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/gridworld.html"><code>gridworld.py</code></a> 
+    </td> 
+    <td>Implementación del Gridworld 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/featureExtractors.html"><code>featureExtractors.py</code></a> 
+    </td> 
+    <td>Clases para extraer características en pares (estado,accion). Utilizadas por el agente q-aprendedor aproximado (en qlearningAgents.py). 
+    </td> 
+  </tr></tbody> 
+</table> 
+<h5 style="color: rgb(50,91,157); font-size: 16px; font-weight: 600"><b>Ficheros que podéis ignorar</b></h5> 
+<table border="0" cellpadding="10"><tbody> 
+  <tr> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/environment.html"><code>environment.py</code></a> 
+    </td> 
+    <td>Clase abstracta para entornos generales de aprendizaje por refuerzo. Utilizada por gridworld.py. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/graphicsGridworldDisplay.html"><code>graphicsGridworldDisplay.py</code></a> 
+    </td> 
+    <td>Interficie gráfica para Gridworld. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/graphicsUtils.html"><code>graphicsUtils.py</code></a> 
+    </td> 
+    <td>Utilidades gráficas. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/textGridworldDisplay.html"><code>textGridworldDisplay.py</code></a> 
+    </td> 
+    <td>Plug-in para la interficie textual del Gridworld. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/crawler.html"><code>crawler.py</code></a> 
+    </td> 
+    <td>Código del crawler. Lo ejecutaréis pero no lo editaréis. 
+    </td> 
+  </tr> 
+  <tr> 
+    <td><a href="docs/graphicsCrawlerDisplay.html"><code>graphicsCrawlerDisplay.py</code></a> 
+    </td> 
+    <td>GUI para el robot crawler. 
+    </td> 
+  </tr></tbody> 
+</table> 
+<p style="line-height: 19px"></p> 
+<p style="line-height: 19px"><strong>¿Qué debéis hacer?:</strong> Rellenaréis porciones de <a href="docs/valueIterationAgents.html"><code>valueIterationAgents.py</code></a>, <a href="docs/qlearningAgents.html"><code>qlearningAgents.py</code></a>, y <a href="docs/analysis.html"><code>analysis.py</code></a>. Sólo debéis enviar estos ficheros (junto con el documento). Por favor no modifiquéis ningún otro fichero.</p> 
+<p style="line-height: 19px"></p> 
+<h3 style="border-bottom: rgb(82,123,189) 1px solid; line-height: 16px; margin-top: 30px; color: rgb(50,91,157); font-size: 18px; font-weight: 600">PDMs</h3> 
+<p style="line-height: 19px">Para comenzar, ejecutar el Gridworld en modo control manual, utilizando las flechas para controlarlo:</p><pre>python gridworld.py -m</pre> 
+<p style="line-height: 19px">Veréis el tablero con dos salidas que os expliqué en clase. El punto azul es el agente. Cuando presionáis <em>arriba</em>, el agente solo se mueve hacia el norte el 80% de las veces. ¡La vida es así para un agente en el mundo rejilla! </p> 
+<p style="line-height: 19px">Podéis controlar diversos aspectos de la simulación. Obtendréis una lista completa de opciones ejecutando:</p><pre> python gridworld.py -h</pre> 
+<p style="line-height: 19px">El agente por defecto se mueve de forma aleatoria</p><pre> python gridworld.py -g MazeGrid</pre> 
+<p style="line-height: 19px">Veréis que el agente se mueve aleatoriamente por la rejilla hasta que se encuentra con una salida. No es el agente más inteligente que uno se pudiera imaginar.</p> 
+<p style="line-height: 19px"><em>Nota:</em> El PDM Gridworld funciona de forma que primero entramos en un estado pre-terminal (con doble recuadro en la GUI) y a continuación realizamos la acción especial 'exit' antes de que termine el episodio (en el estado terminal real, llamado <code>TERMINAL_STATE</code>, que no se muestra en la GUI). Si ejecutáis un episodio manualmente, la recompensa total puede ser menos de la que esperáis debido a la tasa de descuento (podéis cambiarla con <code>-d</code>; por defecto es 0.9).</p> 
+<p style="line-height: 19px">Mirad la salida por consola que acompaña a la salida gráfica (o usad <code>-t</code> para funcionar en modo texto). Os dice cada transición que el agente realiza (para quitarlo, utilizad <code>-q</code>). </p> 
+<p style="line-height: 19px">Como en Pacman, las posiciones se representan mediante coordenadas cartesianas <code>(x,y)</code> y los arrays están indexados por <code>[x][y]</code>, siendo <code>'north'</code> la dirección de <code>y</code> creciente, etc. Por defecto la mayoría de las transiciones reciben una recompensa de cero, aunque esto se puede cambiar con la opción <code>-r</code>. <br /></p> 
+<p style="line-height: 19px"><br /></p> 
+<p style="line-height: 19px; color: rgb(255,0,0)"><em><strong>Cuestión 1 (2,5 puntos)</strong></em></p> 
+<p style="line-height: 19px"><em><strong></strong></em>Escribir un agente que ejecute iteración de valores en <code>ValueIterationAgent</code>, que se os da parcialmente especificado en <a href="docs/valueIterationAgents.html"><code>valueIterationAgents.py</code></a>. Vuestro agente de iteración de valores es un planificador &quot;offline&quot;, no un agente de refuerzo, de forma que la opción relevante para el aprendizaje es el número de iteraciones que se deben ejecutar (opción <code>-i</code>) durante su fase de planificación inicial. <code>ValueIterationAgent</code> recibe un PDM en construcción y ejecuta iteración de valores durante el numero de iteraciones especificado antes de que el constructor retorne.</p> 
+<p style="line-height: 19px">La iteración de valores computa estimaciones de el valor óptimo en k pasos , V<sub>k</sub>. Además de ejecutar iteración de valores, implementad los siguientes métodos en <code>ValueIterationAgent</code> utilizando V<sub>k</sub>.</p> 
+<ul style="padding-bottom: 1px; margin: 0px 0px 0px 25px; padding-left: 1px; padding-right: 1px; padding-top: 1px"> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px"><code>getValue(state)</code> retorna el valor de un estado. </li> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px"><code>getPolicy(state)</code> retorna la mejor acción en un estado de acuerdo con los valores calculados hasta ahora. </li> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px"><code>getQValue(state, action)</code> retorna el q-valor de un par (estado, acción). </li> 
+</ul> 
+<p style="line-height: 19px">Todas estas cantidades se muestran en la GUI: Los valores son números en los cuadrados, los q-valores son números en los laterales del cuadrado y las políticas son flechas.</p> 
+<p style="line-height: 19px"><em>Importante:</em> Utilizad la versión &quot;batch&quot; de la iteración de valores donde cada vector V<sub>k</sub> se computa a partir de un vector fijo V<sub>k-1</sub> (como en clase), no la versión &quot;online&quot; donde se reescribe un único vector. La diferencia se discute en <a href="http://www.cs.ualberta.ca/~sutton/book/ebook/node41.html">Sutton &amp; Barto</a> en el sexto párrafo de la sección 4.1.</p> 
+<p style="line-height: 19px"><em>Nota:</em> Una política creada a partir de los valores a profundidad k (que reflejan las siguientes k recompensas) reflejará las siguientes k+1 recompensas (es decir, devolveréis π<sub>k+1</sub>). De forma similar, los q-valores también reflejarán una recompensa más que los valores (devolveréis Q<sub>k+1</sub>). Podéis asumir que 100 iteraciones es suficiente para alcanzar la convergencia en las cuestiones que siguen.</p> 
+<p style="line-height: 19px">El siguiente comando carga vuestro <code>ValueIterationAgent</code>, que calculará una política y la ejecutará 10 veces. Presionar una tecla par visualizar valores, q-valores y la simulación. Veréis que el valor del estado inicial (<code>V(start)</code>) y la media de recompensas se encuentran muy próximas.</p><pre>python gridworld.py -a value -i 100 -k 10</pre> 
+<p style="line-height: 19px"><em>Ayuda:</em> En el BookGrid por defecto, correr iteración de valores 5 iteraciones debe daros la siguiente salida:</p><pre>python gridworld.py -a value -i 5</pre><center><img title="value iteration with k=5" border="0" hspace="0" alt="value iteration with k=5" src="value.png" width="291" height="248" /></center> 
+<p style="line-height: 19px"><em>Ayuda:</em> Utilizar la clase <code>util.Counter</code> en <a href="docs/util.html"><code>util.py</code></a>, que es un diccionario con un valor por defecto de cero. Métodos como <code>totalCount</code> deberían simplificar vuestro código. De todas formas, tener cuidado con <code>argMax</code>: el argmax que queréis pudiera ser una clave que no estuviera en el contador!</p> 
+<p style="line-height: 19px"><br /></p> 
+<p style="line-height: 19px"><em><strong><span style="color: rgb(255,0,0)">Cuestión 2 (0.5 puntos) </span><br /></strong></em></p> 
+<p style="line-height: 19px"><em><strong></strong></em>En <code>BridgeGrid</code> con el descuento por defecto de 0.9 y el valor de ruido por defecto de 0.2 la política óptima no cruza el puente. Cambiad sólo UNO de los parámetros de descuento y ruido de forma que la política óptima haga que el agente intente cruzar el puente. Incluid vuestra respuesta en el documento de la práctica. (Ruido se refiere a cuan a menudo un agente termina en un estado sucesor al que no quería dirigirse cuando realiza una acción) El valor por defecto se corresponde con:</p><pre>python gridworld.py -a value -i 100 -g BridgeGrid --discount 0.9 --noise 0.2</pre> 
+<p style="line-height: 19px"><em><strong><br /></strong></em></p> 
+<p style="line-height: 19px; color: rgb(255,0,0)"><em><strong>Cuestión 3 (2 puntos)</strong></em></p> 
+<p style="line-height: 19px"><em><strong></strong></em>En el <code>DiscountGrid</code>, dar una asignación de parámetros par el descuento, el ruido y la recompensa por vivir que genere los siguientes tipos de políticas óptimas o decir que la política es imposible. La política por defecto se corresponde con:</p><pre>python gridworld.py -a value -i 100 -g DiscountGrid --discount 0.9 --noise 0.2 --livingReward 0.0</pre> 
+<ol style="padding-bottom: 1px; margin: 0px 0px 0px 25px; padding-left: 1px; padding-right: 1px; padding-top: 1px" type="a"> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px">Escoger la salida cercana (+1), arriesgándose a caer en el acantilado (-10) </li> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px">Escoger la salida cercana (+1), pero evitando el acantilado (-10) </li> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px">Preferir la salida lejana (+10), arriesgándose a caer en el acantilado (-10) </li> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px">Preferir la salida lejana (+10), pero evitando el acantilado (-10) </li> 
+  <li style="padding-bottom: 1px; margin: 0px; padding-left: 1px; padding-right: 1px; padding-top: 1px">Evitar ambas salidas (también evitando el acantilado)<br /><br /></li> 
+</ol> 
+<p style="line-height: 19px"><em>Nota:</em> Podéis verificar vuestras políticas en la GUI. Por ejemplo, utilizando una respuesta correcta a 3(a), la flecha en (0,1) debería apuntar al este, la flecha en (1,1) debería también apuntar al este y la flecha en (2,1) debería apuntar al norte. </p> 
+<p style="line-height: 19px"><br /></p> 
+<h3 style="border-bottom: rgb(82,123,189) 1px solid; line-height: 16px; margin-top: 30px; color: rgb(50,91,157); font-size: 18px; font-weight: 600"><font size="5">Q-aprendizaje</font></h3> 
+<p style="line-height: 19px">Daos cuenta que vuestro agente que usa value iteration no aprende de la experiencia. Mas bien, analiza su modelo PDM para alcanzar una política complete antes de comenzar a interactuar con el entorno real. Cuando interactúa con el entorno, simplemente sigue la política pre-calculada (se convierte en un agente reflejo). Esta distinción puede ser sutil en un entorno simulado como el Gridword, pero es muy importante en el mundo real, donde el PDM real no suele estar a nuestra disposición antes de comenzar. </p> 
+<p style="line-height: 19px; color: rgb(255,0,0)"><strong><em>Cuestión 4 (2 puntos)</em></strong></p> 
+<p style="line-height: 19px"><strong><em></em></strong>Debéis escribir un agente con q-aprendizaje, que planifique muy poco inicialmente pero que en su lugar aprenda por ensayo y error a través de las interacciones con el entorno mediante su método <code>update(state, action, nextState, reward)</code><span class="Apple-converted-space"></span>. Un esquema del q-aprendedor aparece <code>QLearningAgent</code> en <a href="docs/qlearningAgents.html"><code>qlearningAgents.py</code></a>, y podéis seleccionarlo con la opción <code>'-a q'</code>. Para esta cuestión, debéis implementar los métodos <code>update</code>, <code>getValue</code>, <code>getQValue</code>, y <code>getPolicy</code>. </p></span>
+<p><em>Nota:</em> Para <code>getValue</code> y <code>getPolicy</code>, deberíais romper los empates de forma aleatoria para que se comportase mejor. La función <code>random.choice()</code> puede seros útil. En un estado particular, las acciones que vuestro agente <em>no</em> ha visto antes también tienen un Q-valor óptimo, específicamente un Q-valor de cero, y si todas las acciones que vuestro agente <em>ha</em> visto antes tienen Q-valor negativo una acción no vista puede ser óptima. </p>
+<p>Con el q-aprendizaje implementado, podéis observar vuestro q-aprendedor bajo control manual, utilizando el teclado: </p><pre>python gridworld.py -a q -k 5 -m</pre>Recordad que <code>-k</code> controlará el número de episodios que vuestro agente recibe para aprender. Observad como el agente aprende sobre el estado en el que estaba, no sobre el estado al que llega, de forma que va &quot;dejando apredizaje por allá por donde pasa&quot;.<br /><br />
+<p><strong><em><span style="color: rgb(255,0,0)">Cuestión 5 (1 punto)</span><br /></em></strong></p>
+<p><strong><em></em></strong>Completad vuestro agente q-aprendedor implementando la selección de acciones epsilon-voraz action selection en <code>getAction</code>, que selecciona acciones aleatorias con una probabilidad epsilon, y sigue la acción con mejor q-valor en otro caso. </p><pre>python gridworld.py -a q -k 100 </pre>Vuestros q-valores finales deberían parecerse a los del agente de iteración de valores, especialmente a lo largo de caminos muy transitados. A pesar de ello, vuestros retornos medios serán más bajos que los q-valores predichos por la selección aleatoria de acciones en la fase inicial de aprendizaje. 
+<p>Podéis elegir un elemento de una lista de forma aleatoria utilizando la función <code>random.choice</code>. Podéis simular una variable binaria con probabilidad <code>p</code> de éxito utilizando <code>util.flipCoin(p)</code>, que retorna <code>True</code> con probabilidad <code>p</code> y <code>False</code> con probabilidad <code>1-p</code>. <br /></p>
+<p><br /></p>
+<p><strong><em><span style="color: rgb(255,0,0)">Cuestión 6 (0.5 puntos) (OPCIONAL)</span> <br /></em></strong></p>
+<p>Primero, entrenad un q-aprendedor completamente aleatoria con la ratio de aprendizaje por defecto en el BridgeGrid sin ruido durante 50 episodios y observad si encuentra la política óptima o no. </p><pre>python gridworld.py -a q -k 50 -n 0 -g BridgeGrid -e 1</pre>Ahora probad el mismo experimento con una epsilon de 0. ¿Existen una epsilon y un ratio de aprendizaje para la que sea muy probable (más del 99%) que la política óptima sea aprendida después de 50 iteraciones? Epsilon se controla con <code>-e</code>, el ratio de aprendizaje con <code>-l</code>.<br /><br />
+<p style="color: rgb(255,0,0)"><strong><em>Cuestión 7 (0.5 puntos) (OPCIONAL)</em></strong></p>
+<p>Sin código adicional, deberíais ser capaces de ejecutar un robot crawler con q-aprendizaje: </p><pre> python crawler.py</pre>Si no funciona, probablemente habéis escrito algún código demasiado específico para el problema del <code>GridWorld</code> y deberíais hacerlo más general para cualquier PDM. 
+<p>Jugad con los diferentes parámetros de aprendizaje para ver como afectan a las acciones y políticas del agente. Daos cuenta de que el retardo es un parámetro de la simulación, mientras que la ratio de aprendizaje y la epsilon son parámetros de vuestro algoritmo de aprendizaje y el factor de descuento es una propiedad del entorno. </p>
+<h3>Q-aprendizaje aproximado y abstracción de estados</h3>
+<p style="color: rgb(255,0,0)"><strong><em>Cuestión 8 (0,5 punto) </em></strong></p>
+<p>Es el momento de jugar al Pacman!!! Pacman jugará los juegos en dos fases. En la primera fase, <em>aprendizaje</em>, Pacman comenzará a aprender sobre los valores de las posiciones y de las acciones. Debido a que lleva mucho tiempo aprender q-valores precisos incluso para rejillas pequeñas, las partidas de aprendizaje de Pacman se ejecutarán en modo silencioso por defecto, sin GUI ni consola. Una vez que el aprendizaje de Pacman se haya completado, el entrará en modo <em>testing</em>. En este modo, la <code>self.epsilon</code> y la <code>self.alpha</code> del Pacman se fijarán a 0.0, deteniendo el q-aprendizaje y evitando la exploración de nuevas alternativas, para que Pacman pueda explorar la política que ha aprendido. Los juegos de Test se muestran en la GUI por defecto. Sin ningún cambio deberíais ser capaces de ejecutar q-aprendizaje con Pacman para grids muy pequeños como sigue: </p><pre> python pacman.py -p PacmanQAgent -x 2000 -n 2010 -l smallGrid </pre>Daos cuenta que el <code>PacmanQAgent</code> ya está definido en función del <code>QLearningAgent</code> que ya habéis escrito. <code>PacmanQAgent</code> solo es diferente en que tiene los parámetros de aprendizaje por defecto que son más efectivos para el problema del Pacman (<code>epsilon=0.05, alpha=0.2, gamma=0.8</code>). Vuestro agente debería ganar el 80% de las últimas 10 partidas. 
+<p><em>Ayuda:</em> Si vuestro <code>QLearningAgent</code> funciona para <a href="docs/gridworld.html"><code>gridworld.py</code></a> y <a href="docs/crawler.html"><code>crawler.py</code></a> pero no parece aprender una buena política para Pacman en <code>smallGrid</code>, puede ser porque vuestros métodos <code>getAction</code> y/o <code>getPolicy</code> no consideran en algunos casos adecuadamente las acciones no vistas. En particular, porque acciones no vistas tienen por definición un Q-valor de cero, si todas las acciones que <em>hemos</em> visto tienen Q-valores negativso, una acción no vista puede ser óptima. </p>
+<p><em>Nota:</em> Si queréis experimentar con parámetros de aprendizaje, podéis utilizar la opción <code>-a</code>, por ejemplo <code>-a epsilon=0.1,alpha=0.3,gamma=0.7</code>. Estos valores serán accesibles como <code>self.epsilon, self.gamma</code> y <code>self.alpha</code> dentro del agente. </p>
+<p><em>Nota:</em> Aunque se jugarán un total de 2010 partidas, las primeras 2000 no se mostrarán debido a la opción <code>-x 2000</code>, que designa las primeras 2000 partidas para aprendizaje (sin salida). Así que únicamente veréis a Pacman jugar las últimas 10 partidas. El número de juegos de aprendizaje también se puede enviar a vuestro agente mediante la opción <code>numTraining</code>. </p>
+<p><em>Nota:</em> Si queréis ver 10 juegos de aprendizaje para ver lo que está sucediendo, utilizad el comando: </p><pre> python pacman.py -p PacmanQAgent -n 10 -l smallGrid -a numTraining=10</pre><br /><br />Durante el aprendizaje, veréis un mensaje cada 100 partidas con estadísticas sobre como se comporta Pacman. Epsilon es positivo durante el aprendizaje, así que Pacman jugará mal incluso después de haber aprendido una buena política. Esta es la razón por la que de vez en cuando hace un movimiento exploratorio hacia un fantasma. Como prueba, debería aprender durante 1,000 partidas antes de que las recompensas de Pacman para un segmento de 100 episodios se hagan positivas, reflejando que el ha comenzado a ganar más frecuentemente de lo que pierde. Al final del aprendizaje, debería mantenerse positiva y ser relativamente alta (entre 100 y 350). 
+<p>Aseguraos de que entendéis lo que está sucediendo: el estado del PDM es <em>exactamente</em> la configuración del tablero ante el que Pacman se encuentra, con las transiciones describiendo un paso completo del juego. Las configuraciones intermedias en que Pacman se ha movido pero los fantasmas no lo han hecho aún <em>no</em> son estados del PDM. </p>
+<p>Si probáis en el <a href="layouts/mediumGrid.lay"><code>mediumGrid</code></a>, la cosa puede no funcionar tan bien. En nuestra implementación, las recompensas de Pacman se mantienen negativas a lo largo de todo el aprendizaje. En testing, juega fatal, probablemente perdiendo todas las partidas. Encima, el aprendizaje tarda mucho rato. . </p>
+<p>Pacman no gana en escenarios grandes porque cada configuración del tablero es un estado separado con q-valores separados. El no tiene forma de generalizar que tirarse encima de un fantasma es malo para todas las posiciones. Obviamente, esta aproximación no escala.</p>
+<p><br /></p>
+<p style="color: rgb(255,0,0)"><strong><em>Cuestión 9 (1.5 puntos) </em></strong></p>
+<p>Implementad una q-aprendedor aproximado que aprenda pesos para las características de los estados, donde diversos estados comparten las mismas características. Escribid vuestraa implementación en la clase <code>ApproximateQAgent</code> en <a href="docs/qlearningAgents.html"><code>qlearningAgents.py</code></a>, que es una subclase de <code>PacmanQAgent</code>. </p>
+<p><em>Nota:</em> El q-aprendizaje aproximado asume la existencia de una función de caracterización de los estados f(s,a) sobre pares (estado, acción) que retorna un vector f<sub>1</sub>(s,a) .. f<sub>i</sub>(s,a) .. f<sub>n</sub>(s,a) de características. Os presentamos algunas funciones de características en <a href="docs/featureExtractors.html"><code>featureExtractors.py</code></a>. Los vectores de características son objetos <code>util.Counter</code> (como un diccionario) conteniendo parejas de característica y valor para los que el valor es no nulo; todas las características que no aparecen tienen valor cero. </p>
+<p>La q-función aproximada toma la siguiente forma:</p><center><img title="define-eqn1.png" border="0" hspace="0" alt="define-eqn1.png" src="define-eqn1.png" width="238" height="68" /> </center><br />donde cada pesot w<sub>i</sub> se asocia con una característica particular f<sub>i</sub>(s,a). En vuestro código, deberíais implementar el vectors de pesos como un diccionario que mapea las características (que retornan los extractores de características) a valores de los pesos. Actualizaréis vuestros vectores de pesos de forma similar a como actualizábais vuestros q-valores: <center><br /><img title="define-eqn2.png" border="0" hspace="0" alt="define-eqn2.png" src="define-eqn2.png" width="527" height="69" /> </center><br />Fijaos que el termino de corrección es el mismo que en el Q-aprendizaje normal. 
+<p>Por defecto, <code>ApproximateQAgent</code> usa el <code>IdentityExtractor</code>, que asigna una sola característica a cada par <code>(estado, acción)</code>. Con este extractor de características, vuestro agente q-aprendedor aproximado debería trabajar de forma idéntica a <code>PacmanQAgent</code>. Podéis probarlos con el siguiente comando: </p><pre> python pacman.py -p ApproximateQAgent -x 2000 -n 2010 -l smallGrid </pre>
+<p><em>Importante:</em> <code>ApproximateQAgent</code> es una subclase de <code>QLearningAgent</code>, y comparte algunos métodos como <code>getAction</code>. Aseguraos de que vuestros métodos en <code>QLearningAgent</code> llaman a <code>getQValue</code> en lugar de acceder a los q-valores directamente, de forma que cuando sobrescribáis <code>getQValue</code> en vuestro agente aproximado, los nuevos q-valores aproximados se usen para calcular acciones. </p>
+<p>Una vez que tengáis confianza en que vuestro aprendedor aproximado funciona correctamente con las características identidad, ejecutadlo con nuestro propio extractor de características, que puede aprender a ganar con facilidad: </p><pre> python pacman.py -p ApproximateQAgent -a extractor=SimpleExtractor -x 50 -n 60 -l mediumGrid </pre>Incluso situaciones mucho más complejas no deberían ser problema para vuestro <code>ApproximateQAgent</code>. (<em>cuidado</em>: puede tardar unos minutos en aprender) <pre> python pacman.py -p ApproximateQAgent -a extractor=SimpleExtractor -x 50 -n 60 -l mediumClassic </pre>
+<p>Si no tenéis errores, vuestro q-aprendedor aproximado debería ganar casi cada vez con estas características simples, incluso con solo 50 partidas de aprendizaje. </p>
+<p><i>¡Felicidades! ¡Ahora tenéis un agente Pacman que aprende!</i> </p>
+<p></p><br />

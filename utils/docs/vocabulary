@@ -1,0 +1,96 @@
+php -S localhost:8080
+
+
+--delete some objects
+sudo find / -name ".DS_Store" -depth -exec rm {} \;
+
+
+--delete or move folder
+rm -r folderName
+
+-- resize images
+mkdir resized
+for a in *.jpg; do convert "$a" -resize 60% resized/"$a"; done
+for a in *_*; do convert "$a" -resize 256x256\! resized/"$a"; done
+"${PWD##*/}"
+
+uroot mysql test
+show tables;
+
+--sort the ls by extension
+ls -lX
+
+-- Ejecutar un .sh
+./get_cifar10.sh
+
+-- Redirect standart IO to file out.xml
+python scrapCuinaCatalana.py > out.xml
+
+DIY - Do It Yourself
+is brewed for - Esta preparado para
+chunk - pedazo, fragmento
+as a whole - como un todo
+nested - anidado
+unlike - diferente a
+alike - igual que
+boost - estimular
+resume - reanudar
+tricky - engorroso, astuto, tramposo, dificil
+Instead of - en vez de, en lugar de
+before taking off - antes de despegar
+carry out - llevar a cabo
+to tile - embaldosar, tomar(creo)
+to have dropped - haber caido
+the bundled - el paquete
+deploy - despliegue
+to clip - para recortar
+
+FROM SCRATCH; from the beginning; desde el principio 
+Seed; preseleccionar, desgranar, semilla
+
+
+-- find folders and files containing a string. Without '-maxdepth 1'(means at current folder) will look in each dir and subdir
+find . -name "*string*" -maxdepth 1 -print
+find . -name "*._*" -print
+
+# todos los archivos a una fecha concreta
+find -print | while read filename; do
+    # do whatever you want with the file
+    touch -t 200804181642 "$filename"
+done
+
+-- compilar .proto
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/addressbook.proto
+
+protoc --python_out addressbook.proto
+
+-- get command shorcut to an executable
+alias caffe='$CAFFE_ROOT/build/tools/caffe'
+-- refresh terminal
+source ~/.bashrc
+
+
+
+
+
+
+
+
+-----------------
+En diseño de software:
+ · front-end: es la parte del software que interactúa con el o los usuarios
+ · back-end: es la parte que procesa la entrada desde el front-end
+
+
+
+-----------------
+
+-- tokenization
+In lexical analysis, tokenization is the process of breaking a stream of text up into words, phrases, symbols, or other meaningful elements called tokens. The list of tokens becomes input for further processing such as parsing or text mining. Tokenization is useful both in linguistics (where it is a form of text segmentation), and in computer science, where it forms part of lexical analysis.
+
+-- parsing
+Parsing or syntactic analysis is the process of analysing a string of symbols, either in natural language or in computer languages, conforming to the rules of a formal grammar. The term parsing comes from Latin pars (orationis), meaning part (of speech).[1][2]
+
+The term has slightly different meanings in different branches of linguistics and computer science. Traditional sentence parsing is often performed as a method of understanding the exact meaning of a sentence, sometimes with the aid of devices such as sentence diagrams. It usually emphasizes the importance of grammatical divisions such as subject and predicate.
+
+Within computational linguistics the term is used to refer to the formal analysis by a computer of a sentence or other string of words into its constituents, resulting in a parse tree showing their syntactic relation to each other, which may also contain semantic and other information.

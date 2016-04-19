@@ -1,0 +1,14 @@
+
+BEFORE APPLY ANY SOLUTION MAKE YOU SHURE THAT YOU HAVE A BACKUP 
+
+DATA
+
+e1 - Pictures names have spaces and upper cases
+s1 - call the script to replace that characters from 'foodCAT/images/'
+	../../tools/scripts/.replace.sh
+
+e2 - Caffe error show up that there exists image names starting by ._
+s2 - Delete this images, from 'foodCAT/images/' execute:
+	find . -name "*._*" -print
+	find . -name "*._*" -delete
+	find . -name "*._*" -print

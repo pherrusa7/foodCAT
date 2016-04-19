@@ -1,0 +1,6 @@
+
+
+script 'buildNET.py' will generate in the target path the files train, validation and test '.txt' from a given structure of folders with images. You can
+                  specify more than one path to differents datasets.
+
+file 'calls' are examples to execute the above script 

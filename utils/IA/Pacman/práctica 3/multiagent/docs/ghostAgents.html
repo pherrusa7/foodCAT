@@ -1,0 +1,75 @@
+<html>
+  <head>
+  <title>ghostAgents.py</title>
+  </head>
+  <body>
+  <h3>ghostAgents.py</h3>
+  <hr>
+  <pre>
+<span style="color: blue; font-weight: bold">from </span>game <span style="color: blue; font-weight: bold">import </span>Agent
+<span style="color: blue; font-weight: bold">import </span>random
+<span style="color: blue; font-weight: bold">from </span>util <span style="color: blue; font-weight: bold">import </span>chooseFromDistribution
+<span style="color: blue; font-weight: bold">from </span>util <span style="color: blue; font-weight: bold">import </span>manhattanDistance
+<span style="color: blue; font-weight: bold">from </span>game <span style="color: blue; font-weight: bold">import </span>Actions
+
+<span style="color: green; font-style: italic"># John:  Change to a superclass (in pacman.py) that always chooses an action from a distribution, 
+#        and let different policies be reflected in the distributions.
+#        Also, change pacman.py to search for ghost agents in all *Agents.py files.
+
+</span><span style="color: blue; font-weight: bold">class </span>RandomGhost<span style="font-weight: bold">( </span>Agent <span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>__init__<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>index <span style="font-weight: bold">):
+    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">= </span>index
+    
+  <span style="color: blue; font-weight: bold">def </span>getAction<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state <span style="font-weight: bold">):
+    </span><span style="color: blue; font-weight: bold">return </span>random<span style="font-weight: bold">.</span>choice<span style="font-weight: bold">( </span>state<span style="font-weight: bold">.</span>getLegalActions<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">) )
+  
+  </span><span style="color: blue; font-weight: bold">def </span>getDistribution<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state <span style="font-weight: bold">):
+    </span>actions <span style="font-weight: bold">= </span>state<span style="font-weight: bold">.</span>getLegalActions<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">)
+    </span>prob <span style="font-weight: bold">= </span><span style="color: red">1.0 </span><span style="font-weight: bold">/ </span>len<span style="font-weight: bold">( </span>actions <span style="font-weight: bold">)
+    </span><span style="color: blue; font-weight: bold">return </span><span style="font-weight: bold">[( </span>prob<span style="font-weight: bold">, </span>action <span style="font-weight: bold">) </span><span style="color: blue; font-weight: bold">for </span>action <span style="color: blue; font-weight: bold">in </span>actions<span style="font-weight: bold">]
+
+</span><span style="color: blue; font-weight: bold">class </span>DirectionalGhost<span style="font-weight: bold">( </span>Agent <span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>__init__<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>index<span style="font-weight: bold">, </span>prob_attack<span style="font-weight: bold">=</span><span style="color: red">0.8</span><span style="font-weight: bold">, </span>prob_scaredFlee<span style="font-weight: bold">=</span><span style="color: red">0.8 </span><span style="font-weight: bold">):
+    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">= </span>index
+    <span style="color: blue">self</span><span style="font-weight: bold">.</span>prob_attack <span style="font-weight: bold">= </span>prob_attack
+    <span style="color: blue">self</span><span style="font-weight: bold">.</span>prob_scaredFlee <span style="font-weight: bold">= </span>prob_scaredFlee
+    
+  <span style="color: blue; font-weight: bold">def </span>getAction<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state <span style="font-weight: bold">):
+    </span>dist <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>getDistribution<span style="font-weight: bold">( </span>state <span style="font-weight: bold">)
+    </span><span style="color: blue; font-weight: bold">return </span>chooseFromDistribution<span style="font-weight: bold">( </span>dist <span style="font-weight: bold">)
+  
+  </span><span style="color: blue; font-weight: bold">def </span>getDistribution<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state <span style="font-weight: bold">):
+    </span><span style="color: green; font-style: italic"># Read variables from state
+    </span>ghostState <span style="font-weight: bold">= </span>state<span style="font-weight: bold">.</span>getGhostState<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">)
+    </span>legalActions <span style="font-weight: bold">= </span>state<span style="font-weight: bold">.</span>getLegalActions<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">)
+    </span>pos <span style="font-weight: bold">= </span>state<span style="font-weight: bold">.</span>getGhostPosition<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>index <span style="font-weight: bold">)
+    </span>isScared <span style="font-weight: bold">= </span>ghostState<span style="font-weight: bold">.</span>scaredTimer <span style="font-weight: bold">&gt; </span><span style="color: red">0
+    
+    </span>speed <span style="font-weight: bold">= </span><span style="color: red">1
+    </span><span style="color: blue; font-weight: bold">if </span>isScared<span style="font-weight: bold">: </span>speed <span style="font-weight: bold">= </span><span style="color: red">0.5
+    
+    </span>actionVectors <span style="font-weight: bold">= [</span>Actions<span style="font-weight: bold">.</span>directionToVector<span style="font-weight: bold">( </span>a<span style="font-weight: bold">, </span>speed <span style="font-weight: bold">) </span><span style="color: blue; font-weight: bold">for </span>a <span style="color: blue; font-weight: bold">in </span>legalActions<span style="font-weight: bold">]
+    </span>newPositions <span style="font-weight: bold">= [( </span>pos<span style="font-weight: bold">[</span><span style="color: red">0</span><span style="font-weight: bold">]+</span>a<span style="font-weight: bold">[</span><span style="color: red">0</span><span style="font-weight: bold">], </span>pos<span style="font-weight: bold">[</span><span style="color: red">1</span><span style="font-weight: bold">]+</span>a<span style="font-weight: bold">[</span><span style="color: red">1</span><span style="font-weight: bold">] ) </span><span style="color: blue; font-weight: bold">for </span>a <span style="color: blue; font-weight: bold">in </span>actionVectors<span style="font-weight: bold">]
+    </span>pacman_pos <span style="font-weight: bold">= </span>state<span style="font-weight: bold">.</span>getPacmanPosition<span style="font-weight: bold">()
+
+    </span><span style="color: green; font-style: italic"># Select best actions given the state
+    </span>distancesToPacman <span style="font-weight: bold">= [</span>manhattanDistance<span style="font-weight: bold">( </span>pos<span style="font-weight: bold">, </span>pacman_pos <span style="font-weight: bold">) </span><span style="color: blue; font-weight: bold">for </span>pos <span style="color: blue; font-weight: bold">in </span>newPositions<span style="font-weight: bold">]
+    </span><span style="color: blue; font-weight: bold">if </span>isScared<span style="font-weight: bold">:
+      </span>bestScore <span style="font-weight: bold">= </span>max<span style="font-weight: bold">( </span>distancesToPacman <span style="font-weight: bold">)
+      </span>bestProb <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>prob_scaredFlee
+    <span style="color: blue; font-weight: bold">else</span><span style="font-weight: bold">:
+      </span>bestScore <span style="font-weight: bold">= </span>min<span style="font-weight: bold">( </span>distancesToPacman <span style="font-weight: bold">)
+      </span>bestProb <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>prob_attack
+    bestActions <span style="font-weight: bold">= [</span>action <span style="color: blue; font-weight: bold">for </span>action<span style="font-weight: bold">, </span>distance <span style="color: blue; font-weight: bold">in </span>zip<span style="font-weight: bold">( </span>legalActions<span style="font-weight: bold">, </span>distancesToPacman <span style="font-weight: bold">) </span><span style="color: blue; font-weight: bold">if </span>distance <span style="font-weight: bold">== </span>bestScore<span style="font-weight: bold">]
+    
+    </span><span style="color: green; font-style: italic"># Construct distribution
+    </span>numBest <span style="font-weight: bold">= </span>len<span style="font-weight: bold">( </span>bestActions <span style="font-weight: bold">)
+    </span>distribution <span style="font-weight: bold">= [( </span>bestProb <span style="font-weight: bold">/ </span>numBest<span style="font-weight: bold">, </span>action <span style="font-weight: bold">) </span><span style="color: blue; font-weight: bold">for </span>action <span style="color: blue; font-weight: bold">in </span>bestActions<span style="font-weight: bold">]
+    </span>numActions <span style="font-weight: bold">= </span>len<span style="font-weight: bold">( </span>legalActions <span style="font-weight: bold">)
+    </span>distribution <span style="font-weight: bold">+= [( ( </span><span style="color: red">1</span><span style="font-weight: bold">-</span>bestProb <span style="font-weight: bold">) / </span>numActions<span style="font-weight: bold">, </span>action <span style="font-weight: bold">) </span><span style="color: blue; font-weight: bold">for </span>action <span style="color: blue; font-weight: bold">in </span>legalActions<span style="font-weight: bold">]
+    </span><span style="color: blue; font-weight: bold">return </span>distribution
+
+  </pre>
+  </body>
+  </html>
+  

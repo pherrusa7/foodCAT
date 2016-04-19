@@ -1,0 +1,9 @@
+
+
+This file explain the mode how we code in Python Language.
+
+
+1.	We comment what every function does between """ comment tool after the function definition as Python Enhancement 		Proposals (PEP) does.
+2.	We use 3 break Lines (bl, in future) to separate functions.
+3.	Inside functions, we comment what every line does with # comment tool (before the line), excepts when the code is 	 	really auto-explained.
+4.	For readability, we let a space in both sides in parameters i.e. ( parameter_with_left_and_right_space )

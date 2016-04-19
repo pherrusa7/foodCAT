@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Práctica 3: Pacman multiagente</title>
+<link href="projects.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h2>
+      Práctica 3: Pacman Multiagente
+    </h2>
+    <em></em><em>Fecha de entrega, del 20 al 22 del 11 </em><br>
+<blockquote>
+<center>
+<img src="pacman_multi_agent.png" width="359" height="197">
+</center>
+  <p><cite><center>Pacman, ahora con más diversión!!!.<br>
+  Minimax, Expectimax,<br>
+  Evaluation.</center></cite></p>
+</blockquote>
+<h3>
+      Introducción
+    </h3>
+
+<p>En este proyecto diseñaréis agentes para la versión clásica del Pacman, incluyendo fantasmas. Por el camino, implementaréis los algoritmos de búsqueda minimax y expectimax e intentaréis diseñar vuestras funciones de evaluación. 
+
+<p>La base de código no ha cambiado mucho desde el proyecto anterior, pero comenzad instalando el código desde cero en un nuevo directorio. No mezcléis los archivos con los de la práctica 2. Lo que si podéis hacer es utilizar fragmentos del código que hubierais desarrollado en (<code><a href="docs/search.html">search.py</a></code> y <code><a href="docs/searchAgents.html">searchAgents.py</a></code>) de cualquier forma que consideréis oportuna. 
+
+<p>El código para este proyecto contiene los siguientes ficheros, disponibles dentro del archivo  <a href="../multiagent.zip">multiagent.zip</a>.  
+
+<h5>Ficheros clave que debéis leer</h5>
+
+<table border="0" cellpadding="10">
+  
+  <tr><td><code><a href="docs/multiAgents.html">multiAgents.py</a></code></td>
+  <td>Donde residirá todo vuestro código de búsqueda multiagente.</td></tr>
+  
+  <tr><td><code><a href="docs/pacman.html">pacman.py</a></code>
+  <td>El principal fichero que corre juegos de Pacman. En este fichero se encuentra también el tipo <code>GameState</code> que utilizaréis de forma exhaustiva en este proyecto.</td></tr>
+
+  <tr><td><code><a href="docs/game.html">game.py</a></code></td>
+  <td>La lógica detrás de como funciona el mundo de Pacman. Este fichero incluye diferentes tipos soporte como AgentState, Agent, Direction y Grid.</td></tr>
+
+  <tr><td><code><a href="docs/util.html">util.py</a></code></td>
+  <td>Estructuras de datos útiles para implementar algoritmos de búsqueda.</td></tr>
+</table>
+
+<h5>Ficheros que podéis ignorar</h5>
+
+<table border="0" cellpadding="10">
+
+  <tr><td><code><a href="docs/graphicsDisplay.html">graphicsDisplay.py</a></code></td>
+  <td>Gráficos Pacman</td></tr>
+    
+    <tr><td><code><a href="docs/graphicsUtils.html">graphicsUtils.py</a></code></td>
+  <td>Soporte para los gráficos para Pacman</td></tr>
+
+  <tr><td><code><a href="docs/textDisplay.html">textDisplay.py</a></code></td>
+  <td>Gráficos ASCII para Pacman</td></tr>  
+
+    <tr><td><code><a href="docs/ghostAgents.html">ghostAgents.py</a></code></td>
+  <td>Agentes que controlan a los fantasmas</td></tr>
+
+    <tr><td><code><a href="docs/keyboardAgents.html">keyboardAgents.py</a></code></td>
+  <td>Interfaz para controlar Pacman desde el teclado.</td></tr>
+
+    <tr><td><code><a href="docs/layout.html">layout.py</a></code></td>
+  <td>Código para trabajar con diferentes layouts</td></tr>
+
+</table>
+
+<p>&nbsp;
+<p><strong>¿Qué debéis enviar?</strong> Vosotros debéis rellenar porciones de <code><a href="docs/multiAgents.html">multiAgents.py</a></code>
+durante el proyecto. Debéis enviar este fichero con vuestro código y comentarios. Podéis también enviar ficheros de soporte (como <code><a href="docs/search.html">search.py</a></code>, etc.) que utilicéis en vuestro código. Por favor <em>no</em> cambiéis el resto de ficheros de la distribución o enviéis ninguno de los ficheros originales excepto <code><a href="docs/multiAgents.html">multiAgents.py</a></code>. 
+
+
+<p>&nbsp;</p>
+
+<h3>
+      Pacman multiagente
+    </h3>
+<p>
+      En primer lugar, jugad un juego de Pacman clásico:
+ 
+      <pre>python pacman.py</pre>
+
+Ahora ejecutad el agente <code>ReflexAgent</code> en <code><a href="docs/multiAgents.html">multiAgents.py</a></code>:
+
+<pre>python pacman.py -p ReflexAgent</pre>
+
+Observad que juega muy mal incluso en disposiciones sencillas: 
+
+<pre>python pacman.py -p ReflexAgent -l testClassic</pre>
+
+Inspeccionar su código (en <code><a href="docs/multiAgents.html">multiAgents.py</a></code>) y aseguraos de que entendéis lo que está haciendo. 
+
+<p><em><strong>Cuestión 1 (3 puntos)&nbsp; </strong></em> Mejorar el <code>ReflexAgent</code> en <code><a href="docs/multiAgents.html">multiAgents.py</a></code> para que juegue de forma respetable. El código del agente reflejo ofrece algunos ejemplos sobre como consultar el <code>GameState</code> para obtener la información que necesitáis. Un buen agente reflejo deberá considerar la situación de la comida y las posiciones de los fantasmas para funcionar de forma efectiva. Vuestro agente debe ser capaz de superar de forma sencilla y sin problemas la disposición <code>testClassic</code>:
+
+<pre>python pacman.py -p ReflexAgent -l testClassic</pre>
+
+Probad vuestro agente reflejo en la disposición por defecto <code>mediumClassic</code> con un fantasma o dos (eliminad la animación para dar más velocidad a la visualización):
+
+<pre>python pacman.py --frameTime 0 -p ReflexAgent -k 1</pre>
+
+<pre>python pacman.py --frameTime 0 -p ReflexAgent -k 2</pre>
+
+¿Qué tal lo hace? Probablemente muera a menudo con 2 fantasmas a no ser que vuestra función de evaluación sea muy buena.
+
+<p><em>Nota:</em> No podéis tener más fantasmas que los que la <a href="layouts/mediumClassic.lay">disposición</a> permite.
+
+<p><em>Nota:</em> Probad a utilizar como características los recíprocos de valores importantes (como la distancia a la comida) en lugar de los propios valores.
+<p><em>Nota:</em> La función de evaluación que estáis escribiendo está evaluando acciones; in partes posteriores del proyecto, evaluaréis estados.  
+
+
+<p><em>Opciones:</em> Los fantasmas por defecto se comportan de forma aleatoria; podéis jugar contra fantasmas ligeramente más inteligentes (direccionales) utilizando <code>-g DirectionalGhost</code>. Si la aleatoriedad os impide saber si vuestro agente esta mejorando, podéis usar <code>-f</code> para ejecutar con una semilla aleatoria fijada (misma semilla -> mismas elecciones aleatorias en cada partida).  También podéis jugar varios juegos seguidos con <code>-n</code>.  Anulad los gráficos con <code>-q</code> para correr muchos juegos rápidamente.</p> 
+<p>No perdáis mucho tiempo en esta cuestión, ya que el grueso de la práctica está por llegar.</p>
+
+<p><em><strong>Cuestión 2 (5 puntos) </strong></em>Ahora escribiréis un agente para búsqueda con adversario en la clase <code>MinimaxAgent</code> en <code><a href="docs/multiAgents.html">multiAgents.py</a></code>. Vuestro agente minimax agent debería funcionar con cualquier número de fantasmas, así que tendréis que escribir un algoritmo ligéramente más general que el que hemos visto en clase de teoría. En particular, vuestro árbol minimax debe tener múltiples etapas min (una para cada fantasma) para cada etapa max. </p>
+
+<p> Vuestro código debe ser capaz de expandir el árbol del juego hasta una profundidad arbitraria. Asignad la puntuación de las hojas del minimax con la función <code>self.evaluationFunction</code>, que por defecto calcula <code>scoreEvaluationFunction</code>. 
+ <code>MinimaxAgent</code> extiende <code>MultiAgentAgent</code>, que da acceso a <code>self.depth</code> y <code>self.evaluationFunction</code>.  Aseguraos que el código minimax hace referencia a estas dos variables donde sea apropiado, ya que estas variables se rellenan con la información que introduciremos al llamar al juego desde la línea de comandos.   
+
+<p><em>Importante:</em> Un turno de búsqueda se considera un movimiento del pacman y la respuesta de todos los fantasmas, así que la búsqueda a profundidad 2 considera 2 movimientos del pacman y de cada fantasma.</p>
+
+
+<p><em><strong>Ayudas y Observaciones</strong></em>
+<ul>
+<li>La función de evaluación para esta parte ya la tenéis escrita (<code>self.evaluationFunction</code>). No debéis cambiar esta función, pero sí daros cuenta de que estáis evaluando *estados* en lugar de acciones, que es lo que evaluabais con el agente reflejo. Agentes con vista-de-futuro evalúan los estados futuros, mientras que los agentes reflejos evalúan únicamente las acciones del estado actual.</li>
+<li>Los valores minimax del estado inicial en la disposición <code>minimaxClassic</code> son 9, 8, 7, -492 para profundidades 1, 2, 3 y 4 respectivamente. Observad que vuestro agente minimax ganará a menudo (de 15 a 20 juegos en nuestro caso) a pesar de la dura predicción de minimax a profundidad 4.
+
+<pre>python pacman.py -p MinimaxAgent -l minimaxClassic -a depth=4</pre>
+
+<li>Para incrementar la profundidad de búsqueda disponible para vuestro agente, eliminad la acción <code>Directions.STOP</code> de la lista de acciones posible de Pacman. A profundidad 2 debería ser bastante rápido pero a profundidades 3 o 4 será lento. No os preocupéis en la siguiente cuestión lo aceleraremos un poco. 
+
+<li>Pacman es siempre el agente 0, y los agentes se mueven en orden creciente de índice.  
+
+<li>Todos los estados en minimax deberían ser <code>GameStates</code>, o bien pasados a  <code>getAction</code> o generados via <code>GameState.generateSuccessor</code>. En este proyecto no es necesario abstraer a estados simplificados.
+
+<li>En tableros más grandes como <code>openClassic</code> y <code>mediumClassic</code> (por defecto), encontraréis que Pacman es bueno en no morir, pero muy malo para ganar. Frecuentemente lo veréis dando vueltas si progresar. Incluso puede darle vueltas a un copo sin comérselo porque no sabe a donde ir después de comerse el copo. No os preocupéis, en la cuestión 5 lo arreglaréis.
+ 
+<li>Cuando Pacman cree que su muerte es inevitable, intentará terminar el programa tan pronto como pueda, debido a la penalización por vivir. Algunas veces, contra fantasmas aleatorios, está no es la actuación más correcta, pero minimax siempre asume que los contrarios se comportarán de forma óptima:
+
+<pre>python pacman.py -p MinimaxAgent -l trappedClassic -a depth=3</pre>
+
+Aseguraos de que entendéis porque Pacman se abalanza al fantasma más cercano en este caso.
+
+</ul>
+
+<p><em><strong>Cuestión 3 (3 puntos) </strong></em> Hacer un nuevo agente que utilice la poda alfa-beta para explorar el árbol minimax de forma más eficiente, en <code>AlphaBetaAgent</code>.  De nuevo, vuestro algoritmo será ligeramente más general que el pseudocódigo visto en clase, así que parte del reto es extender la poda alfa-beta apropiadamente a múltiples agentes minimizadores.
+
+<p> Deberíais presenciar una aceleración (quizá el alfa-beta de profundidad 4 correrá tan rápido como el minimax de profundidad 2).. Idealmente, profundidad 3 en <code>smallClassic</code> debería correr únicamente en unos segundos por movimiento o más rápido. 
+
+<pre>python pacman.py -p AlphaBetaAgent -a depth=3 -l smallClassic</pre>
+
+<p> Los valores minimax del <code>AlphaBetaAgent</code> deberían ser idénticos a los del <code>MinimaxAgent</code>, aunque las acciones que seleccione pueden variar en función del mecanismo de resolución de empates. De nuevo, los valores minimax del estado inicial en la disposición <code>minimaxClassic</code> son 9, 8, 7 and -492 para profundidades 1, 2, 3 and 4 respectivamente. 
+
+<p><em><strong>Cuestión 4 (3 puntos) </strong></em>
+Los fantasmas aleatorios desde luego no son agentes minimax óptimos, y por lo tanto modelizarlos con búsqueda minimax puede no ser apropiado. Rellenad <code>ExpectimaxAgent</code>, donde vuestro agente no tomará el mínimo entre las acciones de los fantasmas, sino la esperanza de acuerdo con el modelo de como se comportan los fantasmas que tenga vuestro agente. Para simplificar vuestro código, asumid que los únicos enemigos existentes son fantasmas <code>RandomGhost</code> que seleccionan entre sus <code>getLegalAction</code>s siguiendo una distribución aleatoria uniforme.
+
+<p>Deberíais observar un aproximación más caballerosa a los fantasmas. En particular, si Pacman percibe que el podría estar atrapado pero  pero tiene alguna opción de escapar para comer algo más, como mínimo lo intentará. Investigad los resultados de estos dos escenarios:
+
+<pre>python pacman.py -p AlphaBetaAgent -l trappedClassic -a depth=3 -q -n 10</pre>
+
+<pre>python pacman.py -p ExpectimaxAgent -l trappedClassic -a depth=3 -q -n 10</pre>
+
+Deberíais ver que vuestro <code>ExpectimaxAgent</code> gana la mitad del tiempo, mientras que vuestro <code>AlphaBetaAgent</code> siempre pierde. Aseguraos de que entendéis porque el comportamiento aquí difiere tanto del caso minimax. 
+
+<p><em><strong>Cuestión 5 (6 puntos) </strong></em>  Escribir una mejor función de evaluación para Pacman en la función
+<code>betterEvaluationFunction</code>.  La función de evaluación deberá evaluar estados en lugar de acciones como hacía vuestro agente reflejo. Podéis usar cualquier herramienta a vuestra disposición para la evaluación, incluyendo vuestro código de búsqueda del último proyecto. Con profundidad de búsqueda 2, vuestra función de evaluación debería pasar la disposición <code>smallClassic</code> con dos fantasmas aleatorios más de la mitad de las veces para obtener los 6 puntos manteniendo un tiempo de ejecución razonable. 
+
+<pre>python pacman.py -l smallClassic -p ExpectimaxAgent -a evalFn=better -q -n 10</pre>
+
+<p>¡Documentad vuestra función de evaluación!  Tengo gran curiosidad en ver las grandes ideas que tenéis, así que no seais tímidos.  Me reservo el derecho de dar puntos extra a las mejores soluciones y mostrarlas en clase.
+
+<p><em><strong>Ayudas y observaciones</strong></em>
+<ul>
+<li>Como para la función de evaluación de vuestro agente reflejo podríais querer usar los recíprocos de valores importantes (como la distancia a la comida) en lugar de los valores mismos.</li>
+<li>Una manera en la que podríais querer escribir vuestra función de evaluación es usando una combinación lineal de características.  Es decir, computar valores para diferentes características del estado que creáis importantes para a continuación combinar esos valores multiplicándolos por pesos y sumando los resultados. Debéis decidir multiplicar cada característica por un número que refleje su importancia (para vosotros).</li>
+</ul>
+
+<p><em>Se terminó la tercera práctica.  ¿Qué más le esperará a Pacman?</em></p>
+
+</body>
+
+</html>

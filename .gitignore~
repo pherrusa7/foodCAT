@@ -1,0 +1,7 @@
+
+# Avoid all directories that contains caffemodels, they are too long
+snapshots/
+
+# Avoid the images, they are to heavy
+data/
+rawImages/

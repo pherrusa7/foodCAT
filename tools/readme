@@ -1,0 +1,32 @@
+DATA FILES /raw_data/
+0. the folder 'raw_data/examples to scrap/' contains html and xml files used to learn how to scrap
+1. raw files
+'raw_data/foods_string.json' contains the raw food list scrapped from 'www.cuinacatalana.eu'
+'raw_data/food.json' contains the raw food list scrapped from 'www.cuinacatalana.eu' with 904 different classes sorted by category and name
+2. raw files filling empty spaces
+'raw_data/foods.json' contains the raw food list (filling empty categories manually) scrapped from 'www.cuinacatalana.eu' with 904 different classes sorted
+             by category and name
+'raw_data/food_list.json' contains the raw food list (human readable) scrapped from 'www.cuinacatalana.eu' with 904 different classes sorted by category and
+             name
+3. raw files adding the names and categories in Enfglish
+'raw_data/normalized_food.json' contains the classes (human readable) from 'foods.json' adding the name of the class and Category in English.
+'raw_data/normalized_food_list.json' contains the classes from 'foods.json' adding the name of the class and Category in English.
+4. Human selected classes from the original 904 classes preserving the percentatge of classes for each category
+'raw_data/selectedFoods.json' contains the selected (by Catalan people) classes that we scrapt from the website 'www.cuinacatalana.eu' with 144 different
+             classes sorted by category and name
+'raw_data/foods_with_images.json' contains the classes that we could find images for them
+
+SCRIPTS /scripts/
+'scripts/findImages.py' is the script that allows as to download from google all images related to our desired dataset 'selectedFoods.json'
+'scripts/imageRetrive.py' is the script that allows as to download as much as 1000 pictures related to a google query
+'scripts/googleTranslate.py' translates a word
+'scripts/scrapCuinaCatalana.py' is the script to scrap the website 'www.cuinacatalana.eu' where give as the classes that we are using as a dataset.
+                                It saves the classes as a json file
+'scripts/replace.sh' is a script that converts filenames to lowercase and replace characters 'empty spaces' to '_' recursively
+'scripts/stats.py' is a script that summarize the amount of classes that we have for each global category, taken as a input the json file generated
+                    by 'scripts/scrapCuinaCatalana.py'
+
+OTHER FOLDERS
+folder 'raw_images' contains all the raw images, before clean the non related images, of the 144 classes selected.
+
+folder '+tools' have scripts founded on the internet to download images. Never used for this project

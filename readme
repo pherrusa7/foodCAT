@@ -1,0 +1,23 @@
+folder 'buildNET' contains several scripts, the important ones are:
+                  'folder_stats.py' which allows you to summarize how many data you have
+                  'builder/buildNET.py' which allows you to create the files train, val and test
+                                        from your images folders.
+
+folder 'data' contains the folders with the source images
+
+folder 'foodCAT' contains the files train, val and test that 'buildNET/builder/buildNET.py' creates
+
+folder 'models' contains the different models with which you can run caffe with our datasets
+
+folder 'utils' contains docs related to the project, examples of other networks, and theory slides of IA
+
+WARNINGS:
+    1. If you use a different machine to run caffe all the paths must be set. So, You will need to generate/modify again
+        1.1 folder 'foodCAT' by using the script 'buildNET/builder/buildNET.py' running it from the folder '/buildNET/builder/'
+            in other to generate the train, val and test txt with the current absolute path
+        1.2 'models/model_to_use/train_val.prototxt', modify absolutes path of:
+            1.2.1 In layers 'data' in param 'image_data_param'
+                modify the parameter 'source' to point to your 'foodCAT/<train or val>.txt'
+        1.3 In 'models/model_to_use/solver.prototxt', modify absolutes path of:
+            1.3.1 parameter 'net' to point to your 'models/model_to_use/train_val.prototxt'
+            1.3.2 parameter 'snapshot_prefix' to point to your folder 'models/model_to_use/snapshots'

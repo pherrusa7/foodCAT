@@ -1,0 +1,3 @@
+[console_scripts]
+image-scraper = image_scraper:console_main
+

@@ -1,0 +1,8 @@
+
+from ipython call
+run buildNET.py -p '/home/pedro/Pictures/images','/home/pedro/Pictures/food-101/images' -t '/home/pedro/Pictures'
+
+run buildNET.py -p '/home/s3021610/code/images','/home/s3021610/code/food-101/images' -t '/home/s3021610/code'
+
+from folder /buildNET/builder/
+run buildNET.py -p '../../data/images','../../data/food-101/images' -t '../..'

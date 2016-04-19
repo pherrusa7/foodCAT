@@ -1,0 +1,9 @@
+
+# Avoid all directories that contains caffemodels, they are too long
+snapshots/
+*.caffemodel
+*.solverstate
+
+# Avoid the images, they are to heavy
+data/
+rawImages/
