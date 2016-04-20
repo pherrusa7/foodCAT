@@ -1,0 +1,8 @@
+	LOGGIN
+ssh -X s3021610@peregrine.hpc.rug.nl
+
+	TRANSFER FILES TO BE SYNC
+	you can sync the dir1 folder from earlier to a remote computer by using this syntax (note that we want to transfer the actual directory in this case, so we omit the trailing slash):
+rsync -aP TFG s3021610@peregrine:/home/s3021610
+rsymc -rv .* s1xxxxx@peregrine:/data/s1xxxxx
+
