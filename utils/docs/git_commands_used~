@@ -1,0 +1,26 @@
+After create the new repository on github (by the website):
+#################################################################### CREATE THE WORKSPACE
+	CREATE A README FILE AND INIT GIT
+echo "# foodCAT" >> README.md
+init git
+	IDENTIFY MYSELF TO GIT
+git config --global user.email hs.pedro@hotmail.com
+	ADD ALL FILES AND COMMIT (SAVE A SNAPSHOT)
+git add .
+git commit -m 'Well organized code for the first commit'
+	SET THE SERVER AND SEND ALL THERE
+git remote add origin https://github.com/pherrusa7/foodCAT.git
+git push -u origin master
+
+
+
+#################################################################### STANDARD USE
+	ADD NEW CHANGES
+git add .
+	COMMIT THE CHANGES
+git commit -m 'upload to the correct foodCAT folder used to train googleNET'
+	PUSH THE CHANGES TO THE REPO
+git push origin master
+
+
+####################################################################
