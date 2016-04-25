@@ -1,8 +1,32 @@
 	LOGGIN
 ssh -X s3021610@peregrine.hpc.rug.nl
+ssh s3021610@peregrine.hpc.rug.nl
 
-	TRANSFER FILES TO BE SYNC
+	COPY THE PUBLIC KEY (SSH)
+ssh-copy-id s3021610@peregrine.hpc.rug.nl
+
+	TRANSFER FILES TO BE SYNC - PUSH
 	you can sync the dir1 folder from earlier to a remote computer by using this syntax (note that we want to transfer the actual directory in this case, so we omit the trailing slash):
-rsync -aP TFG s3021610@peregrine:/home/s3021610
-rsymc -rv .* s1xxxxx@peregrine:/data/s1xxxxx
+rsync -aP TFG s3021610@peregrine.hpc.rug.nl:/home/s3021610
+
+	PULL (FROM SERVER TO LOCAL)
+rsync -aP s3021610@peregrine.hpc.rug.nl:/home/s3021610/TFG /home/pedro/TFG
+
+
+
+
+
+	OPTIONS
+	In order to keep two directories truly in sync, it is necessary to delete files from the destination directory if they are removed from the source. By default, rsync does not delete anything 		from the destination directory.
+
+	We can change this behavior with the --delete option. Before using this option, use the --dry-run option and do testing to prevent data loss:
+rsync -a --delete source destination
+
+	If you wish to exclude certain files or directories located inside a directory you are syncing, you can do so by specifying them in a comma-separated list following the --exclude= option:
+rsync -a --exclude=pattern_to_exclude source destination
+
+	If we have specified a pattern to exclude, we can override that exclusion for files that match a different pattern by using the --include= option.
+rsync -a --exclude=pattern_to_exclude --include=pattern_to_include source destination
+
+
 
