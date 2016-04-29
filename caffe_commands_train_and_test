@@ -1,23 +1,21 @@
-## train foodCAT_googlenet_food101
-caffe train -solver models/foodCAT/foodCAT_googlenet_food101/solver.prototxt -weights models/foodCAT/foodCAT_googlenet_food101/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
 
+############################### fine-tunning ################## (From folder TFG)
 
-# fine-tunning alexnet
-caffe train -solver models/foodCAT/foodCAT_alexnet/solver.prototxt -weights models/foodCAT/foodCAT_alexnet/bvlc_alexnet.caffemodel
-
-
-# fine-tunning googlenet-Food101
-caffe train -solver /home/pedro/code/my_caffe/foodCAT/foodCAT_googlenet_food101/solver.prototxt -weights /home/pedro/code/my_caffe/foodCAT/foodCAT_googlenet_food101/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
-
-# From folder TFG
-../code/caffe/build/tools/caffe train -solver models/foodCAT_googlenet_food101/solver.prototxt -weights models/foodCAT_googlenet_food101/snapshots/ss_foodCAT_googlenet_food101_train_iter_550525.caffemodel
-
-
+LENET ----------------------
 ../code/caffe/build/tools/caffe train -solver models/foodCAT_googlenet_food101/solver.prototxt -weights models/foodCAT_googlenet_food101/snapshots/
 ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
 
+VGG ----------------------
+../code/caffe/build/tools/caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers/snapshots/VGG_ILSVRC_19_layers.caffemodel > models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/LOGS/VGG_log_29-04-2016.txt
 
-OBS: SI SE QUIERE REANUDAR EL TRAIN SE HACE DESDE EL SOLVER STATE
+VGG - CLUSTER ----------------------
+../code/caffe/build/tools/caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers/snapshots/VGG_ILSVRC_19_layers.caffemodel > models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/LOGS/VGG_log_29-04-2016.txt
 
+ALEXNET ----------------------
+caffe train -solver models/foodCAT/foodCAT_alexnet/solver.prototxt -weights models/foodCAT/foodCAT_alexnet/bvlc_alexnet.caffemodel
+
+############################### RESUME fine-tunning ################## (From folder TFG)
+
+LENET ----------------------
 ../code/caffe/build/tools/caffe train --solver=models/foodCAT_googlenet_food101/solver.prototxt --snapshot=models/foodCAT_googlenet_food101/snapshots/
 ss_foodCAT_googlenet_food101_train_iter_490000.solverstate
