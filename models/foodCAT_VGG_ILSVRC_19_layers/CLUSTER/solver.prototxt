@@ -11,6 +11,6 @@ display: 20
 max_iter: 600000
 momentum: 0.9
 weight_decay: 0.0005
-snapshot: 10000
+snapshot: 5000
 snapshot_prefix: "models/foodCAT_VGG_ILSVRC_19_layers/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train"
 solver_mode: GPU
