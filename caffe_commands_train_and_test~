@@ -11,11 +11,14 @@ VGG ----------------------
 VGG - CLUSTER ----------------------
 ../code/caffe/build/tools/caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers/snapshots/VGG_ILSVRC_19_layers.caffemodel > models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/LOGS/VGG_log_29-04-2016.txt
 
-ALEXNET ----------------------
-caffe train -solver models/foodCAT/foodCAT_alexnet/solver.prototxt -weights models/foodCAT/foodCAT_alexnet/bvlc_alexnet.caffemodel
+ALEXNET - CLUSTER ----------------------
+caffe train -solver models/foodCAT_alexnet/solver.prototxt -weights models/foodCAT_alexnet/snapshots/bvlc_alexnet.caffemodel
 
 ############################### RESUME fine-tunning ################## (From folder TFG)
 
 LENET ----------------------
 ../code/caffe/build/tools/caffe train --solver=models/foodCAT_googlenet_food101/solver.prototxt --snapshot=models/foodCAT_googlenet_food101/snapshots/
 ss_foodCAT_googlenet_food101_train_iter_490000.solverstate
+
+VGG ----------------------
+caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt --snapshot=models/foodCAT_VGG_ILSVRC_19_layers/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_50000.solverstate
