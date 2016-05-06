@@ -1,12 +1,12 @@
 
-1. Web para reconocer la comida Catalana 
+1. Web para reconocer la comida Catalana
 	cat examples/web_demo/app.py
 
 2. Se como sacar las feature_extraction. Creo que sirven para mostrar un mapa 2D donde cada color es una clase y se puede apreciar lo clusterizadas
 que estan, dejando ver asi la eficacia de la red
 
 3. Ya se como printar accuracy, lost, learning rate, etc... en caffe/tools/extras
-./plot_training_log.py.example 7  /home/pedro/Pictures/plot.png  /home/pedro/TFG/models/foodCAT_VGG_ILSVRC_19_layers/LOGS/log.log
+./plot_training_log.py.example 0  models/foodCAT_VGG_ILSVRC_19_layers/LOGS/plot.png  models/foodCAT_VGG_ILSVRC_19_layers/LOGS/log.log
 
 4. EL lr_mult no esta a cero en ninguna capa, asi pues en el train esta modificando todos los pesos. Si se quiere solo entrenar el ultimo hay que ponerlos todos a 0.
 
