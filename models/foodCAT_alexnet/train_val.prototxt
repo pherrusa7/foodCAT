@@ -10,11 +10,11 @@ layer {
   transform_param {
     mirror: true
     crop_size: 227
-    mean_file: "data/ilsvrc12/imagenet_mean.binaryproto"
+    mean_file: "models/foodCAT_alexnet/imagenet_mean.binaryproto"
   }
   image_data_param {
-    source: "data/foodCAT/train.txt"
-    batch_size: 16
+    source: "foodCAT/train.txt"
+    batch_size: 32
     new_height: 256
     new_width: 256
     shuffle:true
@@ -31,11 +31,11 @@ layer {
   transform_param {
     mirror: false
     crop_size: 227
-    mean_file: "data/ilsvrc12/imagenet_mean.binaryproto"
+    mean_file: "models/foodCAT_alexnet/imagenet_mean.binaryproto"
   }
   image_data_param {
-    source: "data/foodCAT/test.txt"
-    batch_size: 16
+    source: "foodCAT/val.txt"
+    batch_size: 32
     new_height: 256
     new_width: 256
     shuffle: true
@@ -358,7 +358,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 16
+    num_output: 218
     weight_filler {
       type: "gaussian"
       std: 0.01

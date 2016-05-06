@@ -1,5 +1,5 @@
-net: "models/foodCAT/foodCAT_alexnet/train_val.prototxt"
-test_iter: 100
+net: "models/foodCAT_alexnet/train_val.prototxt"
+test_iter: 458
 test_interval: 1000
 # lr for fine-tuning should be lower than when starting from scratch
 base_lr: 0.001
@@ -12,5 +12,5 @@ max_iter: 450000
 momentum: 0.9
 weight_decay: 0.0005
 snapshot: 5000
-snapshot_prefix: "models/foodCAT/foodCAT_alexnet/snapshots/ss_foodCAT_alexnet_train"
-solver_mode: CPU
+snapshot_prefix: "models/foodCAT_alexnet/snapshots/ss_foodCAT_alexnet_train"
+solver_mode: GPU
