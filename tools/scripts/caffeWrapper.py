@@ -10,7 +10,7 @@ import sys
 import caffe
 
 
-PATH_TO_PROJECT=''
+PATH_TO_PROJECT='../..'
 TEST=os.path.join(PATH_TO_PROJECT,'foodCAT/test.txt')
 TEST_just_foodCAT=os.path.join(PATH_TO_PROJECT,'foodCAT/test_just_foodCAT.txt')
 
@@ -63,6 +63,7 @@ def deployModel( model ):
     # Set Caffe to GPU
     caffe.set_device(0)
     caffe.set_mode_gpu()
+    #caffe.set_mode_cpu()
 
     model_def = deploy[model]
     model_weights = models[model]
@@ -71,6 +72,7 @@ def deployModel( model ):
                     model_weights,  # contains the trained weights
                     caffe.TEST)     # use test mode (e.g., don't perform dropout)
 
+    return net
 
 
 if __name__ == "__main__":
