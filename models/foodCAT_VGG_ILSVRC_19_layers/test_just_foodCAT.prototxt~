@@ -3,29 +3,6 @@ layer {
   name: "data"
   type: "ImageData"
   include {
-    phase: TRAIN
-  }
- transform_param {
-    crop_size: 224
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-    mirror: true
- }
- image_data_param {
-    source: "foodCAT/train.txt"
-    batch_size: 16
-    new_height: 256
-    new_width: 256
-    shuffle:true
-  }
-  top: "data"
-  top: "label"
-}
-layer {
-  name: "data"
-  type: "ImageData"
-  include {
     phase: TEST
   }
  transform_param {
@@ -36,7 +13,7 @@ layer {
     mirror: false
  }
  image_data_param {
-    source: "foodCAT/val.txt"
+    source: "foodCAT/test_just_foodCAT.txt"
     batch_size: 16
     new_height: 256
     new_width: 256

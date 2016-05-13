@@ -10,7 +10,7 @@ import sys
 import caffe
 
 
-PATH_TO_PROJECT='../..'
+PATH_TO_PROJECT=''
 TEST=os.path.join(PATH_TO_PROJECT,'foodCAT/test.txt')
 TEST_just_foodCAT=os.path.join(PATH_TO_PROJECT,'foodCAT/test_just_foodCAT.txt')
 
@@ -39,13 +39,14 @@ net_TEST  = {"foodCAT_alexnet":   os.path.join(PATH_TO_PROJECT, "models/foodCAT_
 net_TEST_just_foodCAT  = {"foodCAT_alexnet":   os.path.join(PATH_TO_PROJECT, "models/foodCAT_alexnet/ TODO "),
 	   "foodCAT_googlenet_food101":	  os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101/test_just_foodCAT.prototxt"),
 	   "foodCAT_VGG_ILSVRC_19_layers": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers/test_just_foodCAT.prototxt")}
+
+diff_TEST_types = {'net_TEST':net_TEST, 'net_TEST_just_foodCAT':net_TEST_just_foodCAT}
 ####################### END TEST ZONE
 
 
 
 
 ####################### DEPLOY, to use it as the other people. REQUIRE IMAGE PREPROCESSING AS CAFFE DOES IN TRAIN. (OR NOT???)
-
 deploy  = {"foodCAT_alexnet":   os.path.join(PATH_TO_PROJECT, "models/foodCAT_alexnet/ TODO "),
 	   "foodCAT_googlenet_food101":	  os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101/deploy.prototxt"),
 	   "foodCAT_VGG_ILSVRC_19_layers": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/VGG_ILSVRC_19_layers_deploy.prototxt")}
@@ -53,28 +54,49 @@ deploy  = {"foodCAT_alexnet":   os.path.join(PATH_TO_PROJECT, "models/foodCAT_al
 mean  = {"foodCAT_alexnet":   os.path.join(PATH_TO_PROJECT, "models/foodCAT_alexnet/ TODO "),
 	   "foodCAT_googlenet_food101":	  [104, 117, 123],
 	   "foodCAT_VGG_ILSVRC_19_layers": [104, 117, 123]}
-
 ####################### END DEPLOY
 
 
-def deployModel( model ):
-    print models[model]
+def deployModel( modelName, modelType ):
+    """ modelType is which TEST dataset are you using: In our example could be 'net_TEST' or 'net_TEST_just_foodCAT'
+        modelName is which model we are using: Alexnet, googlenet, VGG_ILSVRC_19_layers, etc.
+
+        returns the net
+    """
+    print 'Net definition: ', diff_TEST_types[modelType][modelName]
+    print 'weights: ', models[modelName]
 
     # Set Caffe to GPU
     caffe.set_device(0)
     caffe.set_mode_gpu()
     #caffe.set_mode_cpu()
 
-    model_def = deploy[model]
-    model_weights = models[model]
+    # Assign net parameters
+    model_def = diff_TEST_types[modelType][modelName]
+    model_weights = models[modelName]
 
+    # Create the net is TEST mode
     net = caffe.Net(model_def,      # defines the structure of the model
                     model_weights,  # contains the trained weights
                     caffe.TEST)     # use test mode (e.g., don't perform dropout)
 
     return net
 
+def hamming_distance(gt, est):
+    return sum([1 for (g, e) in zip(gt, est) if g == e]) / float(len(gt))
+
+def check_accuracy(net, num_batches, batch_size = 128):
+    acc = 0.0
+    for t in range(num_batches):
+        net.forward()
+        gts = net.blobs['label'].data
+        ests = net.blobs['score'].data > 0
+        for gt, est in zip(gts, ests): #for each ground truth and estimated label vector
+            acc += hamming_distance(gt, est)
+    return acc / (num_batches * batch_size)
+
+
 
 if __name__ == "__main__":
 
-    deployModel(sys.argv[1])
+    net = deployModel(sys.argv[1])
