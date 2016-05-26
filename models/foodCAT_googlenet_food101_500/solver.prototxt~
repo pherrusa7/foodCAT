@@ -1,6 +1,8 @@
 net: "models/foodCAT_googlenet_food101_500/train_val.prototxt"
-test_iter: 915
-test_interval: 1000
+# int(9143/16.)=571
+test_iter: 571
+# int(91352/4/16.)=1427
+test_interval: 1427
 # lr for fine-tuning should be lower than when starting from scratch
 base_lr: 0.001
 lr_policy: "step"

@@ -1,4 +1,15 @@
 
+############################### fine-tunning 500 ################## (From folder TFG)
+GOOGLENET ----------------------
+caffe train -solver models/foodCAT_googlenet_food101_500/solver.prototxt -weights models/foodCAT_googlenet_food101_500/snapshots/
+ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
+
+VGG ----------------------
+caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel
+
+
+
+
 ############################### fine-tunning ################## (From folder TFG)
 
 LENET ----------------------

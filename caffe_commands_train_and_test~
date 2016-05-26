@@ -1,4 +1,15 @@
 
+############################### fine-tunning 500 ################## (From folder TFG)
+GOOGLENET ----------------------
+caffe train -solver models/foodCAT_googlenet_food101_500/solver.prototxt -weights models/foodCAT_googlenet_food101_500/snapshots/
+ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
+
+VGG ----------------------
+caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel
+
+
+
+
 ############################### fine-tunning ################## (From folder TFG)
 
 LENET ----------------------
@@ -22,3 +33,27 @@ ss_foodCAT_googlenet_food101_train_iter_490000.solverstate
 
 VGG ----------------------
 caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt --snapshot=models/foodCAT_VGG_ILSVRC_19_layers/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_50000.solverstate
+
+
+############################### TEST ################## (From folder TFG)  914,375 = 14630(TOTAL_IMAGES_TEST)÷16(BATCH_SIZE) --> 915
+
+LENET ----------------------
+../code/caffe/build/tools/caffe test -model models/foodCAT_googlenet_food101/test.prototxt -weights models/foodCAT_googlenet_food101/snapshots/first_TRAIN_73_91/ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel -gpu 0 -iterations 915 2> models/foodCAT_googlenet_food101/LOGS/accuracy_test.log
+
+LENET - TEST_JUST_foodCAT ----------------------
+../code/caffe/build/tools/caffe test -model models/foodCAT_googlenet_food101/test_just_foodCAT.prototxt -weights models/foodCAT_googlenet_food101/snapshots/first_TRAIN_73_91/ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel -gpu 0 -iterations 915 2> models/foodCAT_googlenet_food101/LOGS/accuracy_test_just_foodCAT.log
+
+VGG ----------------------
+../code/caffe/build/tools/caffe test -model models/foodCAT_VGG_ILSVRC_19_layers/test.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel -gpu 0 -iterations 915 2> models/foodCAT_VGG_ILSVRC_19_layers/LOGS/accuracy_test.log
+
+VGG - TEST_JUST_foodCAT ----------------------
+../code/caffe/build/tools/caffe test -model models/foodCAT_VGG_ILSVRC_19_layers/test_just_foodCAT.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel -gpu 0 -iterations 915 2> models/foodCAT_VGG_ILSVRC_19_layers/LOGS/accuracy_test_just_foodCAT.log
+
+
+############################### Generate Accuracy Picture  ################## (From folder TFG)
+OBS: The tool that we are using is located in caffe/tools/extra
+
+LENET ---------------------- I don't have it (I didn't save it)
+
+VGG ----------------------
+$CAFFE_ROOT/tools/extra/plot_training_log.py.example 0  models/foodCAT_VGG_ILSVRC_19_layers/LOGS/plot_f0_to50000.png  models/foodCAT_VGG_ILSVRC_19_layers/LOGS/log.log
