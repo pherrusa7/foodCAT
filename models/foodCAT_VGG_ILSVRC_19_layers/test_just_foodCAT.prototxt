@@ -13,7 +13,7 @@ layer {
     mirror: false
  }
  image_data_param {
-    source: "foodCAT/test_just_foodCAT.txt"
+    source: "foodCAT_OLD/test_just_foodCAT.txt"
     batch_size: 8
     new_height: 256
     new_width: 256

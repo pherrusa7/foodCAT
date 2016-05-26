@@ -15,7 +15,7 @@ layer {
     mean_value: 123
   }
   image_data_param {
-    source: "foodCAT/test.txt"
+    source: "foodCAT_OLD/test.txt"
     batch_size: 8
     new_height: 256
     new_width: 256

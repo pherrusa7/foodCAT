@@ -13,7 +13,7 @@ layer {
     mirror: true
  }
  image_data_param {
-    source: "foodCAT/train.txt"
+    source: "foodCAT_OLD/train.txt"
     batch_size: 16
     new_height: 256
     new_width: 256
@@ -36,7 +36,7 @@ layer {
     mirror: false
  }
  image_data_param {
-    source: "foodCAT/val.txt"
+    source: "foodCAT_OLD/val.txt"
     batch_size: 16
     new_height: 256
     new_width: 256
