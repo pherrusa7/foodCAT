@@ -2444,10 +2444,10 @@ layer {
   }
 }
 layer {
-  name: "loss3/classifier_foodCAT_googlenet_food101"
+  name: "loss3/classifier_foodCAT_food101_500"
   type: "InnerProduct"
   bottom: "pool5/7x7_s1"
-  top: "loss3/classifier_foodCAT_googlenet_food101"
+  top: "loss3/classifier_foodCAT_food101_500"
   param {
     lr_mult: 10
     decay_mult: 1
@@ -2470,7 +2470,7 @@ layer {
 layer {
   name: "loss3/loss3"
   type: "SoftmaxWithLoss"
-  bottom: "loss3/classifier_foodCAT_googlenet_food101"
+  bottom: "loss3/classifier_foodCAT_food101_500"
   bottom: "label"
   top: "loss3/loss3"
   loss_weight: 1
@@ -2478,7 +2478,7 @@ layer {
 layer {
   name: "loss3/top-1"
   type: "Accuracy"
-  bottom: "loss3/classifier_foodCAT_googlenet_food101"
+  bottom: "loss3/classifier_foodCAT_food101_500"
   bottom: "label"
   top: "loss3/top-1"
   include {
@@ -2488,7 +2488,7 @@ layer {
 layer {
   name: "loss3/top-5"
   type: "Accuracy"
-  bottom: "loss3/classifier_foodCAT_googlenet_food101"
+  bottom: "loss3/classifier_foodCAT_food101_500"
   bottom: "label"
   top: "loss3/top-5"
   include {

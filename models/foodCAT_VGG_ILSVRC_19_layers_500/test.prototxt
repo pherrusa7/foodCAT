@@ -398,9 +398,9 @@ layer {
   }
 }
 layer {
-  name: "fc8_foodCAT"
+  name: "fc8_foodCAT_500"
   bottom: "fc7"
-  top: "fc8_foodCAT"
+  top: "fc8_foodCAT_500"
   type: "InnerProduct"
   inner_product_param {
     num_output: 216
@@ -409,14 +409,14 @@ layer {
 layer {
   name: "loss"
   type: "SoftmaxWithLoss"
-  bottom: "fc8_foodCAT"
+  bottom: "fc8_foodCAT_500"
   bottom: "label"
   top: "loss/loss"
 }
 layer {
   name: "accuracy/top1"
   type: "Accuracy"
-  bottom: "fc8_foodCAT"
+  bottom: "fc8_foodCAT_500"
   bottom: "label"
   top: "accuracy@1"
   include: { phase: TEST }
@@ -427,7 +427,7 @@ layer {
 layer {
   name: "accuracy/top5"
   type: "Accuracy"
-  bottom: "fc8_foodCAT"
+  bottom: "fc8_foodCAT_500"
   bottom: "label"
   top: "accuracy@5"
   include: { phase: TEST }

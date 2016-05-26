@@ -2125,10 +2125,10 @@ layer {
   }
 }
 layer {
-  name: "loss3/classifier_foodCAT_googlenet_food101"
+  name: "loss3/classifier_foodCAT_food101_500"
   type: "InnerProduct"
   bottom: "pool5/7x7_s1"
-  top: "loss3/classifier_foodCAT_googlenet_food101"
+  top: "loss3/classifier_foodCAT_food101_500"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -2151,6 +2151,6 @@ layer {
 layer {
   name: "prob"
   type: "Softmax"
-  bottom: "loss3/classifier_foodCAT_googlenet_food101"
+  bottom: "loss3/classifier_foodCAT_food101_500"
   top: "prob"
 }
