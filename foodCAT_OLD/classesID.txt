@@ -44,7 +44,7 @@
 (43, 'arr\xc3\xb2s_cald\xc3\xb3s_de_llam\xc3\xa0ntol')
 (44, 'arroz_marinero')
 (45, 'caldo_de_carne')
-(46, 'paella')
+(46, 'paella_cat')
 (47, 'butifarra_con_alubias')
 (48, 'orada_a_la_sal')
 (49, 'sardines_en_escabetx')

@@ -11,7 +11,7 @@ from ast import literal_eval
 PATH_TO_PROJECT=''
 TEST = os.path.join(PATH_TO_PROJECT,'foodCAT/test.txt')
 TEST_just_foodCAT = os.path.join(PATH_TO_PROJECT,'foodCAT/test_just_foodCAT.txt')
-LABELS_FILE = os.path.join(PATH_TO_PROJECT,'foodCAT/classesID.txt')
+LABELS_FILE = os.path.join(PATH_TO_PROJECT,'foodCAT_OLD/classesID.txt')
 
 labels = np.array(np.loadtxt(LABELS_FILE, str, delimiter='\t'))
 labelsDICT = dict([(literal_eval(e)[0],literal_eval(e)[1]) for e in labels])
@@ -47,7 +47,29 @@ allModels = {"foodCAT_alexnet":
                             "nameLayer_AccuracyTop1": 'accuracy@1',
                             "nameLayer_AccuracyTop5": 'accuracy@5',
                             "nameLayer_innerProduct": 'fc8_foodCAT',
-                            "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt")} } # solver is not used to TEST
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt")}, # solver is not used to TEST
+        "foodCAT_googlenet_food101_500":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/snapshots/ss_foodCAT_googlenet_food101_500_iter_275000.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test.prototxt"),
+                                            "net_TEST_just_foodCAT_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT.prototxt"),
+                                            "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_OLD.prototxt"),
+                                            "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT_OLD.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_foodCAT_food101_500',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/solver.prototxt")}, # solver is not used to TEST
+        "foodCAT_VGG_ILSVRC_19_layers_500":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_500_iter_40000.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test.prototxt"),
+                                            "net_TEST_just_foodCAT_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT.prototxt"),
+                                            "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_OLD.prototxt"),
+                                            "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT_OLD.prototxt")},
+                            "nameLayer_AccuracyTop1": 'accuracy@1',
+                            "nameLayer_AccuracyTop5": 'accuracy@5',
+                            "nameLayer_innerProduct": 'fc8_foodCAT_500',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt")} } # solver is not used to TEST
 
 # Here you need to fill all fields if you want to use another dateset (also you will need to fill the 'netDefinition' for each element in allModels dict)
 allDatasets = {"net_TEST":
@@ -55,7 +77,13 @@ allDatasets = {"net_TEST":
                             "numClasses": 218},
             "net_TEST_just_foodCAT":
                             {"numImages": 4530,
-                            "numClasses": 117} }
+                            "numClasses": 117},
+            "net_TEST_500":
+                            {"numImages": 9124,
+                            "numClasses": 216},
+            "net_TEST_just_foodCAT_500":
+                            {"numImages": 4074,
+                            "numClasses": 115} }
 
 
 
@@ -68,6 +96,8 @@ mean  = {"foodCAT_alexnet":   os.path.join(PATH_TO_PROJECT, "models/foodCAT_alex
 	   "foodCAT_googlenet_food101":	  [104, 117, 123],
 	   "foodCAT_VGG_ILSVRC_19_layers": [104, 117, 123]}
 ####################### END DEPLOY
+
+
 
 ################# TEST FUNCTIONS #################
 
@@ -87,7 +117,6 @@ def intNET_TEST_mode( model_def, model_weights, gpu=True ):
     net = caffe.Net(model_def,      # defines the structure of the model
                     model_weights,  # contains the trained weights
                     caffe.TEST)     # use test mode (e.g., don't perform dropout)
-
     return net
 
 # NOT USED
@@ -147,6 +176,8 @@ def accuracy_predictions_groundTruth(net, num_batches, batch_size, numClasses_to
         labels = net.blobs['label'].data
         predicted_labels = np.argmax(net.blobs[nameProbsLayer].data, axis=1)
         for pred, lbl in zip(predicted_labels, labels):
+            if lbl>=216:
+                print 'big: ', lbl
             acc_norm_top1[int(lbl)].append(float(pred==lbl))
             y_true.append(lbl)
             y_pred.append(pred)
@@ -170,6 +201,17 @@ def accuracy_predictions_groundTruth(net, num_batches, batch_size, numClasses_to
 ##### USAGE EXAMPLE (from ipython)
 # import caffeWrapper
 
+################################## second models
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT_500')
+
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT_500')
+################################## first models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101', 'net_TEST_just_foodCAT')
 
@@ -223,6 +265,18 @@ def customTEST(model, dataset):
 
     return y_true, y_pred, cm, cm_normalized
 
+
+################################## second models
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT_500')
+
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT_500')
+################################## first models
 #y_true, y_pred, cm, cm_normalized = fastTEST()
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101', 'net_TEST_just_foodCAT')
@@ -240,7 +294,7 @@ def fastTEST(model, dataset):
             eq=eq+1
         else:
             diff=diff+1
-            if p>116 and t<=116:
+            if p>114 and t<=114: # 114 are the catalan classes
                 print '######## diff'
                 print 't: ',t, 'that is ', labelsDICT[t]
                 print 'p:', p, 'that is ', labelsDICT[p]
@@ -248,6 +302,9 @@ def fastTEST(model, dataset):
     print 'diff: ', diff
     print 'eq: ', eq
     return y_true, y_pred, cm, cm_normalized
+
+
+#TODO def lookUP(target_labels, current_net_labels):
 
 def pruebas(y_true, y_pred):
 

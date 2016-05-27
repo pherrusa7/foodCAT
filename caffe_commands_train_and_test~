@@ -1,8 +1,7 @@
 
 ############################### fine-tunning 500 ################## (From folder TFG)
 GOOGLENET ----------------------
-../code/caffe/build/tools/caffe train -solver models/foodCAT_googlenet_food101_500/solver.prototxt -weights models/foodCAT_googlenet_food101_500/snapshots/
-ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
+../code/caffe/build/tools/caffe train -solver models/foodCAT_googlenet_food101_500/solver.prototxt -weights models/foodCAT_googlenet_food101_500/snapshots/ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
 
 VGG ----------------------
 ../code/caffe/build/tools/caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel
@@ -36,6 +35,7 @@ caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers/CLUSTER/solver.prototxt 
 
 
 ############################### TEST ################## (From folder TFG)  914,375 = 14630(TOTAL_IMAGES_TEST)÷16(BATCH_SIZE) --> 915
+## Better to use my own script
 
 LENET ----------------------
 ../code/caffe/build/tools/caffe test -model models/foodCAT_googlenet_food101/test.prototxt -weights models/foodCAT_googlenet_food101/snapshots/first_TRAIN_73_91/ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel -gpu 0 -iterations 915 2> models/foodCAT_googlenet_food101/LOGS/accuracy_test.log
@@ -53,7 +53,13 @@ VGG - TEST_JUST_foodCAT ----------------------
 ############################### Generate Accuracy Picture  ################## (From folder TFG)
 OBS: The tool that we are using is located in caffe/tools/extra
 
-LENET ---------------------- I don't have it (I didn't save it)
+GOOGLENET ---------------------- I don't have it (I didn't save it)
 
 VGG ----------------------
 $CAFFE_ROOT/tools/extra/plot_training_log.py.example 0  models/foodCAT_VGG_ILSVRC_19_layers/LOGS/plot_f0_to50000.png  models/foodCAT_VGG_ILSVRC_19_layers/LOGS/log.log
+
+GOOGLENET_500 ----------------------
+$CAFFE_ROOT/tools/extra/plot_training_log.py.example 0  models/foodCAT_googlenet_food101_500/LOGS/accuracy.png  models/foodCAT_googlenet_food101_500/LOGS/log.log
+
+VGG_500 ----------------------
+$CAFFE_ROOT/tools/extra/plot_training_log.py.example 0  models/foodCAT_VGG_ILSVRC_19_layers_500/LOGS/accuracy.png  models/foodCAT_VGG_ILSVRC_19_layers_500/LOGS/log.log
