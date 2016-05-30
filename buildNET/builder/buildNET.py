@@ -182,8 +182,8 @@ def buildCaffeData(paths, targetPath):
                 numVal = int(round( len(images)*VAL_PERCENTATGE ))
                 numTest = int(round( len(images)*TEST_PERCENTATGE ))
 
-                # get a list of random images for each set
-                random.shuffle(images)
+                # UNCOMMENT NEXT LINE TO get a list of random images for each set
+                #random.shuffle(images)
                 trainSet = images[:numTrain]
                 valSet = images[numTrain:numTrain+numVal] #[numTrain:]
                 testSet = images[numTrain+numVal:] #[numTrain:]
