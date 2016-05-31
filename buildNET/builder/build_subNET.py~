@@ -37,7 +37,7 @@ import random
 
 # Target default values
 TARGET_PATH = os.getcwd()
-FOLDER = 'foodCAT_500' # wich holds all caffe data. CHANGE THIS AND WRITE YOUR PROJECT NAME
+FOLDER = 'foodCAT_resized_balanced' # wich holds all caffe data. CHANGE THIS AND WRITE YOUR PROJECT NAME
 TRAIN = 'train.txt'
 VAL = 'val.txt'
 TEST = 'test.txt'
@@ -186,8 +186,8 @@ def buildCaffeData(paths, targetPath):
                 numVal = int(round( len(images)*VAL_PERCENTATGE ))
                 numTest = int(round( len(images)*TEST_PERCENTATGE ))
 
-                # get a list of random images for each set
-                random.shuffle(images)
+                # UNCOMMENT NEXT LINE TO get a list of random images for each set
+                #random.shuffle(images)
                 trainSet = images[:numTrain]
                 valSet = images[numTrain:numTrain+numVal] #[numTrain:]
                 testSet = images[numTrain+numVal:] #[numTrain:]
