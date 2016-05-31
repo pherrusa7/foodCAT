@@ -6,3 +6,10 @@ run buildNET.py -p '/home/s3021610/code/images','/home/s3021610/code/food-101/im
 
 from folder /buildNET/builder/
 run buildNET.py -p '../../data/images','../../data/food-101/images' -t '../..'
+
+run build_subNET.py -p '../../data/images','../../data/food-101/images' -t '../..'
+
+
+
+RESIZED MODEL
+run buildNET.py -p '../../data/images','../../data/food-101/resized_images' -t '../..'

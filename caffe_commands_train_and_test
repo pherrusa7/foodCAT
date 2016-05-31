@@ -1,12 +1,9 @@
 
-############################### fine-tunning Resized101 500 ################## (From folder TFG)
+############################### fine-tunning Resized101 500 BALANCED ################## (From folder TFG)
 # Resized 101 dataset with balanced classes
 
 GOOGLENET ----------------------
-../code/caffe/build/tools/caffe train -solver models/foodCAT_googlenet_food101_500/solver.prototxt -weights models/foodCAT_googlenet_food101_500/snapshots/ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
-
-VGG ----------------------
-../code/caffe/build/tools/caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel
+../code/caffe/build/tools/caffe train -solver models/googlenet_resized/solver.prototxt -weights models/googlenet_resized/snapshots/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
 
 
 
@@ -15,9 +12,6 @@ VGG ----------------------
 
 GOOGLENET ----------------------
 ../code/caffe/build/tools/caffe train -solver models/foodCAT_googlenet_food101_500/solver.prototxt -weights models/foodCAT_googlenet_food101_500/snapshots/ss_foodCAT_googlenet_food101_train_iter_490000.caffemodel
-
-VGG ----------------------
-../code/caffe/build/tools/caffe train -solver models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt -weights models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_train_iter_80000.caffemodel
 
 
 

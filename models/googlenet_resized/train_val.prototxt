@@ -16,7 +16,7 @@ layer {
   }
   image_data_param {
     source: "foodCAT_resized/train.txt"
-    batch_size: 16
+    batch_size: 32
     new_height: 256
     new_width: 256
     shuffle:true
@@ -39,7 +39,7 @@ layer {
   }
   image_data_param {
     source: "foodCAT_resized/val.txt"
-    batch_size: 16
+    batch_size: 32
     new_height: 256
     new_width: 256
     shuffle:true
