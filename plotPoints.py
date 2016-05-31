@@ -2,15 +2,18 @@ import sys
 import os
 import getopt
 from scipy import misc
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import json
+#import pdb
 
 SOURCE_PATH = '.'
-TARGET_PATH = os.getcwd()
+#TARGET_PATH = os.getcwd()
 BALANCED = False # CHANGE TO 'True' IF YOU ARE USING BALANCED DATASET)
 MIN_IMAGES = 100
 MAX_IMAGES = 500  # set as you need IF YOU ARE USING BALANCED DATASET
-import pdb
+
 
 # data2 = loadJSON( 'data_resolution.json' )
 def loadJSON( path ):
@@ -76,17 +79,13 @@ def getDirData(path):
     return dirs
 
 # import plotPoints
-#  data = plotPoints.plotPoints(['data/images','data/food-101/images'], '/home/pedro/TFG')
-def plotPoints(paths, targetPath):
+#  data = plotPoints.plotPoints(['data/images','data/food-101/resized_images'])
+def plotPoints(paths):
     '''
     '''
 
     # data will contain the list of each dataset you are using
     data = {}
-
-    # absolute path to the target holder
-    absTargetPath = os.path.abspath(targetPath)
-
 
     for path in paths:
         # Set a new list in the data dict
@@ -116,19 +115,43 @@ def plotPoints(paths, targetPath):
         print path, ' info: '
         print pd.DataFrame(data[path]['points']).describe()
 
+    saveJSON( data, 'data_resolution_RESIZED' )
 
-    y = pd.DataFrame(data['data/food-101/images']['points'])[0]
-    x = pd.DataFrame(data['data/food-101/images']['points'])[1]
-    plt.scatter(x, y, alpha=.1, s=400)
-
-    plt.scatter(x, y, alpha=.1, s=400)
-    x1 = pd.DataFrame(data['data/images']['points'])[1]
-    y1 = pd.DataFrame(data['data/images']['points'])[0]
-    plt.scatter(x1, y1, alpha=.1, s=400, color='red')
-
-    plt.show()
+    # Plot the pixel resolution of all dataset. CHANGES THIS IF YOU CHANGE THE DATASET PATH
+    labels = {'data/food-101/resized_images': 'food-101', 'data/images': 'foodCAT'}
+    colors = {'data/food-101/resized_images': 'blue', 'data/images': 'red'}
+    plotChart(data, labels, colors)
 
     return data
+
+def plotChart(data, labels, colors, title='Pixel resolution'):
+
+    plt.title(title)
+    plt.ylabel('Height')
+    plt.xlabel('Width')
+
+    for dataset in data.keys():
+        y = pd.DataFrame(data[dataset]['points'])[0]
+        x = pd.DataFrame(data[dataset]['points'])[1]
+        plt.scatter(x, y, alpha=.1, s=400, label=labels[dataset], color=colors[dataset])
+
+    plt.legend()
+    plt.show()
+
+def plotFromJson():
+    ''' This function plots the resolution of de datasets saved at FILE='data_resolution.json'
+
+    USAGE: From the folder container of this script and the file FILE, open ipyhton and type:
+    import plotPoints
+    data = plotPoints.plotFromJson()
+    '''
+
+    data = loadJSON( 'data_resolution_RESIZED.json' )
+    labels = {'data/food-101/resized_images': 'food-101', 'data/images': 'foodCAT'}
+    colors = {'data/food-101/resized_images': 'blue', 'data/images': 'red'}
+    plotChart(data, labels, colors)
+    return data
+
 
 def getArgs(argv):
 
@@ -140,20 +163,13 @@ def getArgs(argv):
 
     # Set default values
     path = SOURCE_PATH
-    targetPath = TARGET_PATH
 
     # if they are, get default values
     for opt, arg in opts:
         #print 'opt: ',opt, ' arg: ', arg
         if opt == "-p":
             path = str(arg)
-        if opt == "-t":
-            targetPath = str(arg)
 
-    # check the target path
-    if not os.path.exists(targetPath):
-        print 'incorrect path to save all data (-d)'
-        sys.exit(2)
 
     # check the sources path
     for sourcePath in path.split(","):
@@ -162,18 +178,17 @@ def getArgs(argv):
             sys.exit(2)
 
 
-    return path.split(","), targetPath
+    return path.split(",")
 
 
 #run plotPoints.py -p 'data/images','data/food-101/images'
 if __name__=='__main__':
     '''
         -p path wich holds all directories (classes) where each directory has the images
-        -t where to save the plot
 
     '''
 
     # get paths of superClasses*, num images of train/val and target path to hold all files
-    paths, targetPath = getArgs( sys.argv[1:] )
+    paths= getArgs( sys.argv[1:] )
 
-    plotPoints(paths, targetPath)
+    plotPoints(paths)
