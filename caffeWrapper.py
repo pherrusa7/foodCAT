@@ -9,10 +9,13 @@ from sklearn.metrics import confusion_matrix
 from ast import literal_eval
 
 PATH_TO_PROJECT=''
+'''
 TEST = os.path.join(PATH_TO_PROJECT,'foodCAT/test.txt')
 TEST_just_foodCAT = os.path.join(PATH_TO_PROJECT,'foodCAT/test_just_foodCAT.txt')
-LABELS_FILE = os.path.join(PATH_TO_PROJECT,'foodCAT_OLD/classesID.txt')
+'''
 
+# THIS DEPENDS ON THE DATASET THAT YOU ARE USING
+LABELS_FILE = os.path.join(PATH_TO_PROJECT,'foodCAT_resized/classesID.txt')
 labels = np.array(np.loadtxt(LABELS_FILE, str, delimiter='\t'))
 labelsDICT = dict([(literal_eval(e)[0],literal_eval(e)[1]) for e in labels])
 
@@ -51,8 +54,8 @@ allModels = {"foodCAT_alexnet":
         "foodCAT_googlenet_food101_500":
                             {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/snapshots/ss_foodCAT_googlenet_food101_500_iter_275000.caffemodel"),
                             "netDefinition":
-                                            {"net_TEST_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test.prototxt"),
-                                            "net_TEST_just_foodCAT_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT.prototxt"),
+                                            {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test.prototxt"),
+                                            "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT.prototxt"),
                                             "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_OLD.prototxt"),
                                             "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT_OLD.prototxt")},
                             "nameLayer_AccuracyTop1": 'loss3/top-1',
@@ -62,28 +65,54 @@ allModels = {"foodCAT_alexnet":
         "foodCAT_VGG_ILSVRC_19_layers_500":
                             {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/snapshots/ss_foodCAT_VGG_ILSVRC_19_layers_500_iter_40000.caffemodel"),
                             "netDefinition":
-                                            {"net_TEST_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test.prototxt"),
-                                            "net_TEST_just_foodCAT_500": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT.prototxt"),
+                                            {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test.prototxt"),
+                                            "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT.prototxt"),
                                             "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_OLD.prototxt"),
                                             "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT_OLD.prototxt")},
                             "nameLayer_AccuracyTop1": 'accuracy@1',
                             "nameLayer_AccuracyTop5": 'accuracy@5',
                             "nameLayer_innerProduct": 'fc8_foodCAT_500',
-                            "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt")} } # solver is not used to TEST
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt")}, # solver is not used to TEST
+        "googlenet_resized":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/snapshots/.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_resized": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/test.prototxt"),
+                                            "net_TEST_resized_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/test_just_foodCAT.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_resized',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/solver.prototxt")}, # solver is not used to TEST
+        "googlenet_resized_balanced":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/snapshots/.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/test.prototxt"),
+                                            "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/test_just_foodCAT.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_resized',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/solver.prototxt")} } # solver is not used to TEST
 
 # Here you need to fill all fields if you want to use another dateset (also you will need to fill the 'netDefinition' for each element in allModels dict)
+# TODO: Actually numImages we can read it automatically from the net (HOW?), and numClasses could be just the parameter 'num_classes_with_predictions', as is calculated
+# with the ground True labels.
 allDatasets = {"net_TEST":
                             {"numImages": 14630,
                             "numClasses": 218},
             "net_TEST_just_foodCAT":
                             {"numImages": 4530,
                             "numClasses": 117},
-            "net_TEST_500":
+            "net_TEST_balanced":
                             {"numImages": 9124,
                             "numClasses": 216},
-            "net_TEST_just_foodCAT_500":
+            "net_TEST_balanced_just_foodCAT":
                             {"numImages": 4074,
-                            "numClasses": 115} }
+                            "numClasses": 115},
+            "net_TEST_resized":
+                            {"numImages": 14516,
+                            "numClasses": 216},
+            "net_TEST_resized_just_foodCAT":
+                            {"numImages": 4416,
+                            "numClasses": 115}}
 
 
 
@@ -204,13 +233,13 @@ def accuracy_predictions_groundTruth(net, num_batches, batch_size, numClasses_to
 ################################## second models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_500')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_balanced_just_foodCAT')
 
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_500')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_balanced_just_foodCAT')
 ################################## first models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101', 'net_TEST_just_foodCAT')
@@ -266,16 +295,22 @@ def customTEST(model, dataset):
     return y_true, y_pred, cm, cm_normalized
 
 
+################################## resized models
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized', 'net_TEST_resized')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized', 'net_TEST_resized_just_foodCAT')
+
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized_balanced', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized_balanced', 'net_TEST_balanced_just_foodCAT')
 ################################## second models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_500')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101_500', 'net_TEST_balanced_just_foodCAT')
 
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_500')
-# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_just_foodCAT_500')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'net_TEST_balanced_just_foodCAT')
 ################################## first models
 #y_true, y_pred, cm, cm_normalized = fastTEST()
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_googlenet_food101', 'net_TEST')
