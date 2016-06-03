@@ -295,6 +295,17 @@ def customTEST(model, dataset):
     return y_true, y_pred, cm, cm_normalized
 
 
+
+def worst_K_classified(cm, k=6):
+    # sorted maxArg matrix reverse (biiger first) (by the option '-' before the cm)
+    maxargs = np.argsort(-cm)
+    # take the k first
+    k_maxargs = maxargs[:,:k]
+
+    # build the structure to see the labels for each classified
+
+
+
 ################################## resized models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized', 'net_TEST_resized')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized', 'net_TEST_resized_just_foodCAT')
