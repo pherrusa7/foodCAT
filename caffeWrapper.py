@@ -74,7 +74,7 @@ allModels = {"foodCAT_alexnet":
                             "nameLayer_innerProduct": 'fc8_foodCAT_500',
                             "solver": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/solver.prototxt")}, # solver is not used to TEST
         "googlenet_resized":
-                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/snapshots/.caffemodel"),
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/snapshots/ss_googlenet_resized_iter_157992.caffemodel"),
                             "netDefinition":
                                             {"net_TEST_resized": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/test.prototxt"),
                                             "net_TEST_resized_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/test_just_foodCAT.prototxt")},
@@ -83,7 +83,7 @@ allModels = {"foodCAT_alexnet":
                             "nameLayer_innerProduct": 'loss3/classifier_resized',
                             "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/solver.prototxt")}, # solver is not used to TEST
         "googlenet_resized_balanced":
-                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/snapshots/.caffemodel"),
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/snapshots/ss_googlenet_resized_balanced_iter_27360.caffemodel"),
                             "netDefinition":
                                             {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/test.prototxt"),
                                             "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/test_just_foodCAT.prototxt")},
@@ -93,7 +93,7 @@ allModels = {"foodCAT_alexnet":
                             "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/solver.prototxt")} } # solver is not used to TEST
 
 # Here you need to fill all fields if you want to use another dateset (also you will need to fill the 'netDefinition' for each element in allModels dict)
-# TODO: Actually numImages we can read it automatically from the net (HOW?), and numClasses could be just the parameter 'num_classes_with_predictions', as is calculated
+# TODO: Actually numImages we can read it automatically from the net (HOW?), and numClasses could be just the parameter 'num_classes_with_predictions', as it's calculated
 # with the ground True labels.
 allDatasets = {"net_TEST":
                             {"numImages": 14630,
