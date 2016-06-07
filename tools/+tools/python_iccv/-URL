@@ -1,0 +1,1096 @@
+<!doctype html>
+<!-- Server: sfs-consume-14 -->
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]>--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        
+        
+        <meta id="project_name" name="project_name" content="opencvlibrary">
+        
+        <meta name="description" content="Open Source Computer Vision Library">
+        <meta name="keywords" content="Robotics, Human Machine Interfaces, Realtime Processing,  Open Source, Open Source Software, Development, Community, Source Code, Secure,  Downloads, Free Software">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OpenCV -  Browse /opencv-unix at SourceForge.net</title>
+        <link rel="shortcut icon" href="//a.fsdn.com/con/img/sftheme/favicon.ico">
+        
+<!-- CCM Tag -->
+<script type="text/javascript">
+  (function () {
+    /*global _ml:true, window */
+    _ml = window._ml || {};
+    _ml.eid = '771';
+
+    var s = document.getElementsByTagName('script')[0], cd = new Date(), mltag = document.createElement('script');
+    mltag.type = 'text/javascript'; mltag.async = true;
+    mltag.src = '//ml314.com/tag.aspx?' + cd.getDate() + cd.getMonth() + cd.getFullYear();
+    s.parentNode.insertBefore(mltag, s);
+  })();
+</script>
+<!-- End CCM Tag -->
+
+        
+        <script type="text/javascript">
+            /*global unescape, window, console, jQuery, $, net, SF, DD_belatedPNG, ga */
+            // Setup our namespace
+            if (!window.SF) { window.SF = {}; }
+            if (!window.net) { window.net = {}; }
+            if (!window.net.sf) { window.net.sf = {}; }
+            SF.Ads = {};
+            SF.cdn = '//a.fsdn.com/con';
+            SF.deploy_time = '1465242925';
+        </script>
+        <script src="//a.fsdn.com/con/js/min/sf.head.js?1465242925" type="text/javascript"></script>
+        
+<!--[if lt IE 7 ]>
+  <script src="//a.fsdn.com/con/js/sftheme/vendor/dd_belatedpng.js"></script>
+  <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+
+<link href='//fonts.googleapis.com/css?family=Ubuntu:regular' rel='stylesheet' type='text/css'>
+<style type="text/css">
+    @font-face {
+        font-family: "Pictos";
+        src: url('//a.fsdn.com/con/css/fonts/sftheme/pictos-web.eot');
+        src: local("☺"), url('//a.fsdn.com/con/css/fonts/sftheme/pictos-web.woff') format('woff'), url('//a.fsdn.com/con/css/fonts/sftheme/pictos-web.ttf') format('truetype'), url('//a.fsdn.com/con/css/fonts/sftheme/pictos-web.svg') format('svg');
+    }
+</style>
+ <link rel="stylesheet" href="//a.fsdn.com/con/css/sf.css?1465242925" type="text/css">
+
+
+        <style type="text/css">.y071248c46bb10ff55edae6079fd161b234dd177e { display: none !important; }</style>
+
+        
+<script type="text/javascript">
+    SF.adblock = true;
+</script>
+  <script type='text/javascript'>
+
+  var googletag = window.googletag || {};
+   googletag.cmd = googletag.cmd || [];
+   (function() {
+     var gads = document.createElement('script');
+     gads.async = true;
+     gads.type = 'text/javascript';
+     gads.src = 'https://www.googletagservices.com/tag/js/gpt.js';
+
+     
+
+     var node = document.getElementsByTagName('script')[0];
+     node.parentNode.insertBefore(gads, node);
+   })();
+   </script>
+
+   <!-- GPT Slot Definitions -->
+   <script type='text/javascript'>
+       /*global googletag */
+       var gptadslots=[];
+       var gptadHandlers={};
+       googletag.cmd.push(function() {
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_ProjectFiles_728x90_A', [728, 90], 'div-gpt-ad-1393435113147-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['opencvlibrary', 'robotics', 'java', 'scientific', 'python', 'multimedia', 'video_realtime', 'video', 'HMI', 'cpp'])
+                                                        .setTargeting('shortname', 'opencvlibrary')
+                                                        .setTargeting('aud', ['scienceresearch', 'developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/')
+                                                        .setTargeting('sz', '728x90')
+                                                        .setTargeting('page_type', 'pg_files'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_ProjectFiles_300x250_A', [[300, 250], [300, 600], [300, 1050]], 'div-gpt-ad-1392147725721-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['opencvlibrary', 'robotics', 'java', 'scientific', 'python', 'multimedia', 'video_realtime', 'video', 'HMI', 'cpp'])
+                                                        .setTargeting('shortname', 'opencvlibrary')
+                                                        .setTargeting('aud', ['scienceresearch', 'developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/')
+                                                        .setTargeting('sz', '300x250,300x600,300x1050')
+                                                        .setTargeting('page_type', 'pg_files'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_ProjectFiles_HubIcon_200x90_A', [200, 90], 'div-gpt-ad-1392148098424-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['opencvlibrary', 'robotics', 'java', 'scientific', 'python', 'multimedia', 'video_realtime', 'video', 'HMI', 'cpp'])
+                                                        .setTargeting('shortname', 'opencvlibrary')
+                                                        .setTargeting('aud', ['scienceresearch', 'developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/')
+                                                        .setTargeting('sz', '200x90')
+                                                        .setTargeting('page_type', 'pg_files'));
+            gptadslots.push(googletag.defineSlot('/41014381/Sourceforge/SF_ProjectFiles_300x250_B', [300, 250], 'div-gpt-ad-1392148208789-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['opencvlibrary', 'robotics', 'java', 'scientific', 'python', 'multimedia', 'video_realtime', 'video', 'HMI', 'cpp'])
+                                                        .setTargeting('shortname', 'opencvlibrary')
+                                                        .setTargeting('aud', ['scienceresearch', 'developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/')
+                                                        .setTargeting('sz', '300x250')
+                                                        .setTargeting('page_type', 'pg_files'));
+            gptadslots.push(googletag.defineSlot('/7346874/SF-300x250', [300, 250], 'div-gpt-ad-1392148208795-0')
+                                                    .addService(googletag.pubads())
+                                                        .setTargeting('tpc', ['opencvlibrary', 'robotics', 'java', 'scientific', 'python', 'multimedia', 'video_realtime', 'video', 'HMI', 'cpp'])
+                                                        .setTargeting('shortname', 'opencvlibrary')
+                                                        .setTargeting('aud', ['scienceresearch', 'developers'])
+                                                        .setTargeting('mirror', 'False')
+                                                        .setTargeting('dc_ref', 'https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/')
+                                                        .setTargeting('sz', '300x250')
+                                                        .setTargeting('page_type', 'pg_files'));
+            
+            googletag.pubads().enableAsyncRendering();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                var unitName = event.slot.getName();
+                if ( unitName in gptadHandlers ) {
+                   try {
+                       SF.Ads.RenderHandlers[gptadHandlers[unitName]].call(this, event);
+                   } catch (e) {
+                   }
+                }
+            });
+            googletag.pubads().addEventListener('impressionViewable', SF.Ads.RenderHandlers.viewabilityInstrumentation);
+
+            
+            googletag.enableServices();
+        });
+   </script>
+
+        
+
+        
+        <script type="text/javascript" src="//a.fsdn.com/con/js/adframe.js?1465242925"></script>
+        <script type="text/javascript">
+
+            /*jshint ignore:start*/
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            /*jshint ignore:end*/
+
+            //var $ = jQuery.noConflict(); // jshint ignore:line
+        </script>
+        <script type="text/javascript">
+                ga('create', 'UA-36130941-1', {'name': '1'});
+                ga('create', 'UA-36130941-1', 'auto');
+            if (typeof _ml !== 'undefined' && _ml.us) {
+                if (_ml.us.tp && _ml.us.tp.length > 0) {
+                    ga('set', 'dimension2', _ml.us.tp[0]);
+                }
+                if (_ml.us.pc && _ml.us.pc.length > 0) {
+                    ga('set', 'dimension7', _ml.us.pc[0]);
+                }
+                ga('set', 'dimension3', _ml.us.ind);
+                ga('set', 'dimension4', _ml.us.cr);
+                ga('set', 'dimension5', _ml.us.cs);
+                ga('set', 'dimension6', _ml.us.dm);
+                ga('set', 'dimension8', _ml.us.sn);
+            }
+
+            
+                ga('set', 'dimension9', 'opencvlibrary');
+                ga('set', 'dimension10', 'pg_files');
+                    
+                ga('set', 'dimension13', 'Logged Out');
+                ga('set', 'dimension14', 'No');  
+                ga('set', 'dimension15', 'desktop');
+                ga('send', 'pageview');
+
+            
+        </script>
+        <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//analytics.slashdotmedia.com/";
+            _paq.push(['setTrackerUrl', u+'sf.php']);
+            _paq.push(['setSiteId', 39]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'sf.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+
+        <script type="text/javascript"> try{(function(){ var cb = new Date().getTime(); var s = document.createElement("script"); s.defer = true; s.src = "//tag.crsspxl.com/s1.js?d=2396&cb="+cb; var s0 = document.getElementsByTagName('script')[0]; s0.parentNode.insertBefore(s, s0); })();}catch(e){} </script>
+<script type="text/javascript">
+/* Version: 0.7 */
+/* <![CDATA[ */
+try {
+    var _mag = _mag || {};
+    _mag.kw = 'Robotics,Human Machine Interfaces,Realtime Processing';
+    _mag.kw_encoded = 0;
+    _mag.shortName = 'sourceforgemedia-computing';
+    _mag.default_protocol = ('https:' === document.location.protocol ? 'https:' : 'http:');
+    _mag.startTime = (new Date()).getTime();
+    (function(d,t) {
+        var mag = d.createElement('script'); mag.type = 'text/javascript'; mag.async = true; mag.src = t;
+        var head = d.getElementsByTagName('head')[0] || d.documentElement; head.insertBefore(mag, head.firstChild);
+    })(document,  _mag.default_protocol + '//d3ezl4ajpp2zy8.cloudfront.net/sourceforgemedia-computing_tag.js');
+} catch (e) {}
+/* ]]> */
+</script>
+
+        <script type="text/javascript" src="//ads.pro-market.net/ads/scripts/site-143572.js"></script></head>
+    <body id="pg_files" class="
+    user
+     bluesteel
+ anonymous">
+        
+        
+
+        <div id="busy-spinner"></div>
+        
+<header id="site-header">
+    <div class="wrapper">
+        <a href="/" class="logo">
+            <span>SourceForge</span>
+        </a>
+        <form method="get" action="/directory/">
+            <input type="text" id="words" name="q" placeholder="Search">
+        </form>
+        <!--Switch to {language}-->
+        <nav id="nav-site">
+            <a href="/directory/" title="Browse our software.">Browse</a>
+            <a href="/directory/enterprise" title="Browse our Enterprise software.">Enterprise</a>
+            <a href="/blog/" title="Read the latest news from the SF HQ.">Blog</a>
+            <a href="//deals.sourceforge.net/?utm_source=sourceforge&amp;utm_medium=navbar&amp;utm_campaign=homepage" title="Discover and Save on the Best Gear, Gadgets, and Software" class="featured-link" target="_blank">Deals</a>
+            <a href="/support" title="Contact us for help and feedback.">Help</a>
+        </nav>
+        <nav id="nav-account">
+            
+              <div class="logged_out">
+                  <a href="https://sourceforge.net/auth/">Log In</a>
+                <span>or</span>
+                <a href="https://sourceforge.net/user/registration">Join</a>
+              </div>
+            
+        </nav>
+    </div>
+</header>
+<header id="site-sec-header">
+    <div class="wrapper">
+        <nav id="nav-hubs">
+            <h4>Solution Centers</h4>
+            <a href="http://goparallel.sourceforge.net/">Go Parallel</a>
+        </nav>
+        <nav id="nav-collateral">
+
+            <a href="https://library.slashdotmedia.com/">Resources</a>
+
+            <a href="/user/newsletters?source=sfnet_header">Newsletters</a>
+
+            
+            <a href="/cloud-storage-providers/?source=sfnet_header">Cloud Storage Providers</a>
+            
+            
+            <a href="/business-voip/?source=sfnet_header">Business VoIP Providers</a>
+            
+            
+
+
+        </nav>
+    </div>
+</header>
+
+
+        <header id="page-header">
+    
+    <div id="banner-sterling" class="sterling">
+        
+
+
+
+
+    
+
+
+<div class="sticky-anchor"></div>
+<div class="sticky">
+
+<div id="SF_ProjectFiles_728x90_A_wrapped" class="draper leaderboard  " data-unit="SF_ProjectFiles_728x90_A">
+<script type="text/javascript">
+/*global googletag */
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1393435113147-0" ></div>');
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1393435113147-0');
+    });
+}());
+</script>
+</div>
+
+
+</div>
+<script type="text/javascript">
+    SF.Ads.stickyLeader = new SF.Stickify($('.sticky').eq(0));
+</script>
+        
+
+
+
+
+    
+
+
+
+<div id="SF_ProjectFiles_HubIcon_200x90_A_wrapped" class="draper hub  " data-unit="SF_ProjectFiles_HubIcon_200x90_A">
+<script type="text/javascript">
+/*global googletag */
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148098424-0" ></div>');
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148098424-0');
+    });
+}());
+</script>
+</div>
+
+
+    </div>
+    <div style="clear:both"></div>
+
+    <div id="project-header" itemscope itemtype="http://schema.org/softwareapplication">
+        <nav id="breadcrumbs">
+            <ul>
+                <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="/">Home</a></li>
+                <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="/directory">Browse</a></li><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="/directory/science-engineering/">Science &amp; Engineering</a></li><li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="/directory/science-engineering/robotics/">Robotics</a></li><li class="project"><a href="/projects/opencvlibrary/">OpenCV</a></li>
+                <li>Files</li>
+            </ul>
+        </nav>
+        
+<section id="project-icon" class="noneditable">
+    <img itemscope itemtype="http://schema.org/ImageObject" itemprop="image" alt="OpenCV Icon" src="//a.fsdn.com/allura/p/opencvlibrary/icon" height="48" width="48"/>
+</section>
+<div id="project-title" class="project-mirror">
+    <div >
+        <div>
+            <h1 itemprop="name">
+                    <a href="/projects/opencvlibrary/" itemprop="url">OpenCV</a></h1>
+        </div>
+        <h2>
+            Open Source Computer Vision Library
+        </h2>
+        <p id="maintainers" itemprop="author" itemscope itemtype="http://schema.org/Person" class="with-icon">
+        Brought to you by:
+        <a href="http://sourceforge.net/u/akamaev/" itemprop="url"><span itemprop="name">akamaev</span></a>, <a href="http://sourceforge.net/u/alalek/" itemprop="url"><span itemprop="name">alalek</span></a>, <a href="http://sourceforge.net/u/ashishkov/" itemprop="url"><span itemprop="name">ashishkov</span></a>, <a href="http://sourceforge.net/u/asmorkalov/" itemprop="url"><span itemprop="name">asmorkalov</span></a>, and <a href="/p/opencvlibrary/_members/">7 others</a></p>
+        
+    </div>
+    
+
+</div>
+<nav id="project-nav">
+    
+    <div id="top_nav"><div id="top_nav_admin">
+        <ul class="dropdown">
+            
+            <li >
+                <a href="/projects/opencvlibrary/?source=navbar"
+                >
+                <span>Summary</span></a>
+                
+            </li>
+            
+            <li class="selected">
+                <a href="/projects/opencvlibrary/files/?source=navbar"
+                >
+                <span>Files</span></a>
+                
+            </li>
+            
+            <li >
+                <a href="/projects/opencvlibrary/reviews?source=navbar"
+                >
+                <span>Reviews</span></a>
+                
+            </li>
+            
+            <li >
+                <a href="/projects/opencvlibrary/support?source=navbar"
+                >
+                <span>Support</span></a>
+                
+            </li>
+            
+            <li >
+                <a href="/p/opencvlibrary/wiki/?source=navbar"
+                >
+                <span>Wiki</span></a>
+                
+            </li>
+            
+            <li >
+                <a href="/p/opencvlibrary/donate/?source=navbar"
+                data-external=true>
+                <span>Donate</span></a>
+                
+            </li>
+            
+            
+        </ul>
+        
+    </div></div>
+    
+</nav>
+
+
+    </div>
+</header>
+
+
+        
+<div id="messages">
+</div>
+
+
+
+        <div id="page-body">
+    <noscript>
+        <p>The interactive file manager requires Javascript. Please enable it or use <a href="https://sourceforge.net/p/forge/documentation/Release%20Files%20for%20Download#scp">sftp or scp</a>.
+        <br/>You may still <em>browse</em> the files here.</p>
+    </noscript>
+    <div id="files">
+      <div class="download-bar">Looking for the latest version? <strong>
+            <a href="/projects/opencvlibrary/files/latest/download?source=files" title="/opencv-unix/3.1.0/opencv-3.1.0.zip:  released on 2015-12-18 16:19:18 UTC">
+                <span>Download opencv-3.1.0.zip (79.2 MB)</span>
+            </a></strong>
+        </div><div class="files-breadcrumb">
+            <span class="actions"><a href="/projects/opencvlibrary/rss?path=/opencv-unix" title="Monitor this project's files using RSS" data-icon="f" class="ico ico-feed"></a></span>
+            
+                <a id="home" href="/projects/opencvlibrary/files/" title="Files root directory">
+            
+            Home
+            
+                </a>
+                /
+            
+            
+            <span class="current-dir">opencv-unix</span>
+
+        </div>
+
+        <table id="files_list" title="This is a list of the files for this project">
+            <col class="name-column">
+            <col class="date-column">
+            <col class="size-column">
+            <col class="downloads-column">
+            <col class="status-column">
+            <thead>
+                <tr>
+                    <th title="The file or folder's name" id="files_name_h" class="first">Name</th>
+                    <th title="The file or folder's last modified date" id="files_date_h" class="opt">Modified</th>
+                    <th title="The file size" id="files_size_h" class="opt">Size</th>
+                    <th title="The weekly download count" id="files_downloads_h" class="opt">Downloads / Week</th>
+                    <th title="A snapshot of the file or folder's status" id="files_status_h" class="typesort">Status</th>
+                </tr>
+                
+                    <tr>
+                        <th colspan="5" class="first" id="parent_folder"><a href=".." title="One level up"><span data-icon="{" class="onelevup ico ico-uparrow"></span>Parent folder</a></th>
+                    </tr>
+                
+            </thead>
+            <tfoot>
+                <tr>
+                    <td id="totals"><span class="label">Totals: </span>13 Items</td>
+                    <td class="opt">&nbsp;</td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt"></td>
+                    <td headers="files_status_h">
+                        
+                    </td>
+                </tr>
+            </tfoot>
+            <tbody>
+                
+                <tr title="2.4.13" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.4.13/"
+                           title="Click to enter 2.4.13"
+                           class="name">
+                        2.4.13</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2016-05-19 14:26:22 UTC">2016-05-19</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        1,058<a href="/projects/opencvlibrary/files/opencv-unix/2.4.13/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:221,183,186,110,103,181,74&amp;chds=0,322" title="1,058 weekly downloads" alt="1,058 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="3.1.0" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/3.1.0/"
+                           title="Click to enter 3.1.0"
+                           class="name">
+                        3.1.0</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2015-12-18 16:19:18 UTC">2015-12-18</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        1,398<a href="/projects/opencvlibrary/files/opencv-unix/3.1.0/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:235,282,247,160,136,242,96&amp;chds=0,322" title="1,398 weekly downloads" alt="1,398 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="3.0.0" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/3.0.0/"
+                           title="Click to enter 3.0.0"
+                           class="name">
+                        3.0.0</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2015-06-04 12:38:24 UTC">2015-06-04</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        204<a href="/projects/opencvlibrary/files/opencv-unix/3.0.0/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:46,40,33,16,17,37,15&amp;chds=0,322" title="204 weekly downloads" alt="204 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="3.0.0-rc1" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/3.0.0-rc1/"
+                           title="Click to enter 3.0.0-rc1"
+                           class="name">
+                        3.0.0-rc1</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2015-04-24 12:49:47 UTC">2015-04-24</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        18<a href="/projects/opencvlibrary/files/opencv-unix/3.0.0-rc1/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:8,6,0,0,1,1,2&amp;chds=0,322" title="18 weekly downloads" alt="18 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.4.11" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.4.11/"
+                           title="Click to enter 2.4.11"
+                           class="name">
+                        2.4.11</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2015-02-26 16:05:39 UTC">2015-02-26</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        795<a href="/projects/opencvlibrary/files/opencv-unix/2.4.11/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:159,137,123,87,79,151,59&amp;chds=0,322" title="795 weekly downloads" alt="795 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.4.10" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.4.10/"
+                           title="Click to enter 2.4.10"
+                           class="name">
+                        2.4.10</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2014-10-07 19:04:44 UTC">2014-10-07</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        735<a href="/projects/opencvlibrary/files/opencv-unix/2.4.10/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:140,112,123,128,78,114,40&amp;chds=0,322" title="735 weekly downloads" alt="735 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.4.9" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.4.9/"
+                           title="Click to enter 2.4.9"
+                           class="name">
+                        2.4.9</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2014-04-17 12:44:21 UTC">2014-04-17</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        1,655<a href="/projects/opencvlibrary/files/opencv-unix/2.4.9/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:322,307,235,162,210,292,127&amp;chds=0,322" title="1,655 weekly downloads" alt="1,655 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.3.1" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.3.1/"
+                           title="Click to enter 2.3.1"
+                           class="name">
+                        2.3.1</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2011-09-12 18:12:02 UTC">2011-09-12</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        118<a href="/projects/opencvlibrary/files/opencv-unix/2.3.1/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:35,20,22,8,8,21,4&amp;chds=0,322" title="118 weekly downloads" alt="118 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.2" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.2/"
+                           title="Click to enter 2.2"
+                           class="name">
+                        2.2</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2010-12-05 03:49:09 UTC">2010-12-05</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        59<a href="/projects/opencvlibrary/files/opencv-unix/2.2/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:10,4,11,3,7,13,11&amp;chds=0,322" title="59 weekly downloads" alt="59 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.1" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.1/"
+                           title="Click to enter 2.1"
+                           class="name">
+                        2.1</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2010-04-06 01:47:11 UTC">2010-04-06</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        26<a href="/projects/opencvlibrary/files/opencv-unix/2.1/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:8,3,2,4,4,5,0&amp;chds=0,322" title="26 weekly downloads" alt="26 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="2.0" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/2.0/"
+                           title="Click to enter 2.0"
+                           class="name">
+                        2.0</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2009-10-01 00:59:45 UTC">2009-10-01</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        40<a href="/projects/opencvlibrary/files/opencv-unix/2.0/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:10,4,7,4,2,11,2&amp;chds=0,322" title="40 weekly downloads" alt="40 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="1.1pre1" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/1.1pre1/"
+                           title="Click to enter 1.1pre1"
+                           class="name">
+                        1.1pre1</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2008-10-19 19:05:32 UTC">2008-10-19</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        1<a href="/projects/opencvlibrary/files/opencv-unix/1.1pre1/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:0,0,0,0,0,0,1&amp;chds=0,322" title="1 weekly downloads" alt="1 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+                <tr title="1.0" class="folder ">
+                    <th scope="row" headers="files_name_h"><span data-icon="o" class="ico ico-folder"></span>
+                        
+                        
+                        <a href="/projects/opencvlibrary/files/opencv-unix/1.0/"
+                           title="Click to enter 1.0"
+                           class="name">
+                        1.0</a></th>
+                    <td headers="files_date_h" class="opt"><abbr title="2007-05-24 15:21:48 UTC">2007-05-24</abbr></td>
+                    <td headers="files_size_h" class="opt"></td>
+                    <td headers="files_downloads_h" class="opt">
+                        28<a href="/projects/opencvlibrary/files/opencv-unix/1.0/stats/timeline" class="fs-stats ui-corner-all folder"><img class="fs-sparklines folder" src="https://a.fsdn.com/con/img/gallery/opa75.png" data-src="https://sourceforge.net/downloads/_googlechartapi/chart?cht=ls&amp;chs=20x16&amp;chco=0685c6&amp;chm=B,0685c6,0,0,0&amp;chd=t:3,3,5,5,5,7,0&amp;chds=0,322" title="28 weekly downloads" alt="28 weekly downloads" width="20" height="16" rel="nofollow" /></a></td>
+                    <td headers="files_status_h" class="status folder"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="files-drawer" class="fs-widget fs-drawer consumer">
+        </div>
+        <div id="readme">
+            
+            <div class="content format-rest"><div class="document">
+<div class="section" id="opencv-open-source-computer-vision-library">
+<h1>OpenCV: open source computer vision library</h1>
+<ul class="simple">
+<li>Homepage:    <a class="reference external" href="http://opencv.org">http://opencv.org</a></li>
+<li>Online docs: <a class="reference external" href="http://docs.opencv.org">http://docs.opencv.org</a></li>
+<li>Q&amp;A forum:   <a class="reference external" href="http://answers.opencv.org">http://answers.opencv.org</a></li>
+<li>Dev zone:    <a class="reference external" href="http://code.opencv.org">http://code.opencv.org</a></li>
+</ul>
+</div>
+</div>
+</div>
+            <span class="meta">Source: README.rst, updated 2013-04-05</span>
+            
+        </div>
+    </div>
+
+    
+    <div id="files-sidebar" class="scroll-fixable" data-floor-compensate="145">
+        <div class="sterling">
+        
+
+
+
+
+    
+    
+
+
+
+<div id="SF_ProjectFiles_300x250_A_wrapped" class="draper multisize  " data-unit="SF_ProjectFiles_300x250_A">
+<script type="text/javascript">
+/*global googletag */
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392147725721-0" ></div>');
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392147725721-0');
+    });
+}());
+</script>
+</div>
+
+
+        </div>
+                <aside class="sidebar-widget">
+        <header>
+        <h3>Recommended Projects</h3>
+        </header>
+    <ul class="vertical">
+        
+
+        
+
+            
+                <li class="item odd">
+                <a href="/projects/emgucv/?source=recommended" title="Emgu CV"><img alt="Icon" src="//a.fsdn.com/con/img/project_default.png" /></a>
+                <div class="pinfo-content recommended">
+                <a class="project-name" href="/projects/emgucv/?source=recommended"
+                        title="Learn more about Emgu CV ">Emgu CV</a>
+                        <div class="summary">
+                        Emgu CV is a cross platform .Net wrapper for OpenCV
+                        </div>
+                    </div>
+
+            </li>
+            
+                <li class="item even">
+                <a href="/projects/numpy/?source=recommended" title="Numerical Python"><img alt="Icon" src="//a.fsdn.com/allura/p/numpy/icon" /></a>
+                <div class="pinfo-content recommended">
+                <a class="project-name" href="/projects/numpy/?source=recommended"
+                        title="Learn more about Numerical Python ">Numerical Python</a>
+                        <div class="summary">
+                        A package for scientific computing with Python
+                        </div>
+                    </div>
+
+            </li>
+            
+                <li class="item odd last">
+                <a href="/projects/simplecv/?source=recommended" title="SimpleCV"><img alt="Icon" src="//a.fsdn.com/allura/p/simplecv/icon" /></a>
+                <div class="pinfo-content recommended">
+                <a class="project-name" href="/projects/simplecv/?source=recommended"
+                        title="Learn more about SimpleCV ">SimpleCV</a>
+                        <div class="summary">
+                        
+                        </div>
+                    </div>
+
+            </li>
+            
+        
+    </ul>
+</aside>
+
+
+        
+<a href="http://track.totalvpn.com/5703e6ec22268/click" rel="nofollow" class="static-placement recovery"><img width="300" height="250" alt="Total VPN" src="//a.fsdn.com/con/img/promotional/1394209358857.jpg"/></a>
+
+        
+                <div class="sterling">
+                    
+    <aside class="sidebar-widget stackcommerce-widget">
+            <header id="stackcommerce-header">
+                <img src="//a.fsdn.com/con/img/sf_logo250x32.png" width="125" height="16" alt="sourceforge.net logo" />
+                <h3>Deals</h3>
+            </header>
+            
+
+
+
+
+    
+
+
+
+<div id="SF-300x250_wrapped" class="draper medrec  " data-unit="SF-300x250">
+<script type="text/javascript">
+/*global googletag */
+(function(){
+    
+    document.write('<div id="div-gpt-ad-1392148208795-0" ></div>');
+    googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1392148208795-0');
+    });
+}());
+</script>
+</div>
+
+
+    </aside>
+    
+
+                </div>
+            
+        
+    </div>
+    
+    
+<script type="text/javascript">
+
+SF.Ads.scrollFixableEnabled = true;
+
+</script>
+
+        </div>
+        
+
+        
+        
+
+          
+<footer id="site-footer">
+    <div class="wrapper">
+        <nav>
+            <h5>SourceForge</h5>
+            <a href="/about">About</a>
+            <a href="/blog/category/sitestatus/">Site Status</a>
+            <a href="http://twitter.com/sfnet_ops">@sfnet_ops</a>
+        </nav>
+        <nav>
+            <h5>Find and Develop Software</h5>
+            <a href="/create/">Create a Project</a>
+            <a href="/directory/">Software Directory</a>
+            <a href="/top">Top Downloaded Projects</a>
+        </nav>
+        <nav>
+            <h5>Community</h5>
+            <a href="/blog/">Blog</a>
+            <a href="http://twitter.com/sourceforge">@sourceforge</a>
+            <a href="https://library.slashdotmedia.com/">Resources</a>
+        </nav>
+        <nav>
+            <h5>Help</h5>
+            <a href="http://p.sf.net/sourceforge/docs">Site Documentation</a>
+            <a href="/support">Support Request</a>
+        </nav>
+    </div>
+</footer>
+<footer id="site-copyright-footer">
+    <div class="wrapper">
+        <div id="copyright">
+            &copy; 2016 Slashdot Media. All Rights Reserved.<br />
+        </div>
+        <nav>
+            <a href="https://slashdotmedia.com/terms-of-use/">Terms</a>
+            <a href="https://slashdotmedia.com/privacy-statement/">Privacy</a>
+            <span id='teconsent'></span>
+            <a href="https://slashdotmedia.com/opt-out-choices/">Opt Out Choices</a>
+            <a href="https://slashdotmedia.com">Advertise</a>
+        </nav>
+    </div>
+</footer>
+            <script src="//a.fsdn.com/con/js/min/sf.js?1465242925" type="text/javascript"></script>
+        
+
+        
+            <script type="text/javascript" src="//consent-st.truste.com/get?name=notice.js&amp;domain=slashdot.org&amp;c=teconsent&amp;text=true"></script>
+            <noscript><p><img src="//analytics.slashdotmedia.com/sf.php?idsite=39" style="border:0;" alt="" /></p></noscript>
+<script type="text/javascript" src="https://a.fsdn.com/con/js/files.js?1465242925"></script>
+
+
+<script type="text/x-handlebars-template" id="file-drawer-template">
+
+<form class="bp" action="{{files_url}}{{full_path}} method="put" id="file_properties_content">
+    <table id="drawer_row">
+        <col class="name-column">
+        <col class="date-column">
+        <col class="size-column">
+        <col class="downloads-column">
+        <col class="status-column">
+        <tbody>
+            <tr title="{{name}}">
+                <td>
+                {{#if authorized }}
+                    <input type="text" class="title" name="name" value="{{name}}">
+                {{else}}
+                    <a href="{{file_title_url this}}" class="name">{{name}}</a>
+                {{/if}}
+                </td>
+                <td class="files-date"></td>
+                <td class="files-size"></td>
+                <td class="files-downloads"></td>
+                <td class="files-status status"></td>
+            </tr>
+            {{#if authorized}}
+                <tr>
+                    <td colspan="5" id="name_message" class="invalid hide"></td>
+                </tr>
+                {{#if d_type}}
+                <tr>
+                    <td colspan="5">
+                        <input type="checkbox" name="stage" id="stage" value="1" style="vertical-align: baseline" {{checked this.staged}} {{stage_onclick this}} />
+                        <label for="stage" title="Only release technicians will see this folder in the file browser." {{stage_onclick this}}>{{stage_message this staging_days}}</label>
+                        <span title="Only release technicians will see this folder in the file browser." class="ico-help">?</span>
+                        {{stage_date this}}
+                    </td>
+                </tr>
+                {{/if}}
+            {{/if}}
+        </tbody>
+    </table>
+
+    <div id="file-details">
+        {{#if f_type}}
+        <div id="file-info">
+            {{stage_date this}}
+
+            <div class="label">
+                <span>SHA1:</span>
+            </div>
+            <div class="value">
+                <pre class="selectable">{{sha1}}</pre>
+            </div>
+
+            <div class="label">
+                <span>MD5:</span>
+            </div>
+            <div class="value">
+                <pre class="selectable">{{md5}}</pre>
+            </div>
+
+            {{#if authorized}}
+            <div class="label">
+                <span>Download URL:</span>
+            </div>
+            <div class="value">
+                {{#if not_downloadable}}
+                    <pre class="selectable" title="This file will be ready for download shortly.">This file will be ready for download shortly.</pre>
+                {{else}}
+                <pre class="selectable" title="{{download_url}}">{{download_url}}</pre>
+                {{/if}}
+            </div>
+
+            <div class="label">
+                <label for="download_label">Download Button:</label>
+            </div>
+            <div class="value">
+                <span class="text"><input id="download_label" type="text" class="text" name="download_label" placeholder="Change the label used on the download button" value="{{download_label}}"></span>
+            </div>
+
+            <div class="label">
+                <label for="exclude_reports">Exclude Stats:</label>
+            </div>
+            <div class="value">
+                <span class="checkbox"><input type="checkbox" id="exclude_reports" name="exclude_reports" value="1" {{should_exclude_reports exclude_reports}}></span>
+            </div>
+            {{/if}}
+
+            {{#if legacy_release_notes}}
+            <div class="value no-label">
+                <span><a href="{{legacy_release_notes}}">Release Notes</a></span>
+            </div>
+            {{/if}}
+        </div>
+
+        <div id="download-info">
+            <div class="label" style="width: 137px">
+                <span>Downloads (All-Time):</span>
+            </div>
+            <div class="value" style="width:100px">
+                <span>{{download_display downloads}}</span>
+            </div>
+
+            {{#if authorized}}
+            <div class="label">
+                <span>Mirror Status:</span>
+            </div>
+            <div class="value">
+                <span id="mirror_count">Loading ...</span>
+            </div>
+            {{/if}}
+
+            <div class="default">
+                {{#if show_platforms}}
+                <div class="drawer-label">
+                    <span>Default Download For:</span>
+                </div>
+                {{/if}}
+                <div class="drawer-value">
+                    <ul>
+                    {{#each platforms}}
+                        {{> platform}}
+                    {{/each}}
+
+                    {{#if authorized}}
+                    <li><a href="#select_all" title="Select all">Select all</a></li>
+                    {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if authorized}}
+        <hr />
+        <p><input type="submit" value="Save"> <a href="#" id="cancel" class="btn link cancel">Cancel</a></p>
+        {{/if}}
+    </div>
+</form>
+
+</script>
+
+<script type="text/x-handlebars-template" id="platform-partial">
+
+    <li>
+        <label>
+            {{#if authorized}}
+            <input type="checkbox" name="default" value="{{value}}" {{_checked}}>
+            <span title="{{title}}" class="platform-icon {{value}}">{{title}}</span>
+            {{/if}}
+
+            {{#unless authorized}}
+            {{#unless skip}}
+            <span title="{{title}}" class="platform-icon {{value}}">{{title}}</span>
+            {{/unless}}
+            {{/unless}}
+        </label>
+    </li>
+
+</script>
+
+<script type="text/javascript">
+    $(function ($) {
+        $('#files').files();
+        $.ajax({
+            url: window.location.pathname + '/list',
+            success: function(data) { net.sf.files = data; },
+            dataType: "json",
+            global: false
+        });
+    });
+    $(window).load(function() {
+        $('.fs-sparklines').each(function(){
+          $(this).attr('src', $(this).attr('data-src'));
+        });
+
+        var tsConfig = {
+            widgets: ['zebra'],
+            sortForce: [[4, 0]],
+            headers: {
+                1: { sorter: 'abbrdate' },
+                2: { sorter: 'filesize' },
+                3: { sorter: 'localnum' },
+                4: { sorter: 'type'}
+            },
+            textExtraction: function (node) {
+                return node.innerHTML;
+            }
+        };
+
+        if ($('#files_list tbody tr').length) {
+            $('#files_list').tablesorter(tsConfig);
+            $('#files_list tr th#parent_folder').unbind();
+            $('#files_list tr th.header').not('.typesort').not('#parent_folder').addClass('usersortable').append('<span class="ui-icon fs-toggle"><\/span>');
+        }
+    });
+</script>
+
+        
+      </body>
+</html>
+
