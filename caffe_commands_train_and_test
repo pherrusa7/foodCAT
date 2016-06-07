@@ -10,10 +10,12 @@ GOOGLENET ----------------------
 ############################### fine-tunning Resized101 ################## (From folder TFG)
 # Resized 101 dataset with unbalanced classes
 
-GOOGLENET ----------------------
+GOOGLENET (from fine-tuning food101)----------------------
 ../code/caffe/build/tools/caffe train -solver models/googlenet_resized/solver.prototxt -weights models/googlenet_resized/snapshots/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
 
 
+GOOGLENET (from fine-tuning imagenet) ----------------------
+../code/caffe/build/tools/caffe train -solver models/googlenet_resized/solver_from_imagenet.prototxt -weights models/googlenet_resized/snapshots_from_imagenet/bvlc_googlenet.caffemodel
 
 
 ############################### fine-tunning 500 ################## (From folder TFG)
