@@ -10,9 +10,11 @@ rm -r folderName
 
 -- resize images
 mkdir resized
-for a in *.jpg; do convert "$a" -resize 60% resized/"$a"; done
+for a in *.jpg; do convert "$a" -resize 50% resized/"$a"; done
 for a in *_*; do convert "$a" -resize 256x256\! resized/"$a"; done
 "${PWD##*/}"
+
+find . -name "*.jpg" | xargs mogrify -resize 256x256\!
 
 uroot mysql test
 show tables;
@@ -45,7 +47,7 @@ the bundled - el paquete
 deploy - despliegue
 to clip - para recortar
 
-FROM SCRATCH; from the beginning; desde el principio 
+FROM SCRATCH; from the beginning; desde el principio
 Seed; preseleccionar, desgranar, semilla
 
 

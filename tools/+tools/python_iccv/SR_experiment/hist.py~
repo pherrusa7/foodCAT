@@ -1,0 +1,11 @@
+from scipy import misc
+
+
+
+
+
+
+
+def hist(img_path):
+	face = misc.imread('face.png')
+
