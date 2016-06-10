@@ -1,11 +1,30 @@
+FALTA
+############################### [*****] fine-tunning SR BALANCED from Imagenet ################## (From folder TFG)
+# Resized 101 dataset from imagenet snapshot
+
+GOOGLENET ----------------------
+../code/caffe/build/tools/caffe train -solver models/googlenet_SR_balanced/solver.prototxt -weights models/googlenet_SR_balanced/snapshots/bvlc_googlenet.caffemodel
+
+FALTA
+############################### [*****] fine-tunning SR from Imagenet ################## (From folder TFG)
+# Resized 101 dataset from imagenet snapshot
+
+GOOGLENET ----------------------
+../code/caffe/build/tools/caffe train -solver models/googlenet_SR/solver.prototxt -weights models/googlenet_SR/snapshots/bvlc_googlenet.caffemodel
+
+##################################################################################
+##################################################################################
+##################################################################################
+##################################################################################
 
 ############################### fine-tunning Resized101 500 BALANCED ################## (From folder TFG)
 # Resized 101 dataset with balanced classes
 
-GOOGLENET ----------------------
+GOOGLENET (from fine-tuning food101)----------------------
 ../code/caffe/build/tools/caffe train -solver models/googlenet_resized_balanced/solver.prototxt -weights models/googlenet_resized_balanced/snapshots/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
 
-
+GOOGLENET (from fine-tuning IMAGENET) ---------------------- FALTAAAAAAAAA
+../code/caffe/build/tools/caffe train -solver models/googlenet_resized_balanced/solver_from_imagenet.prototxt -weights models/googlenet_resized_balanced/snapshots_from_imagenet/bvlc_googlenet.caffemodel
 
 ############################### fine-tunning Resized101 ################## (From folder TFG)
 # Resized 101 dataset with unbalanced classes
@@ -14,9 +33,13 @@ GOOGLENET (from fine-tuning food101)----------------------
 ../code/caffe/build/tools/caffe train -solver models/googlenet_resized/solver.prototxt -weights models/googlenet_resized/snapshots/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
 
 
-GOOGLENET (from fine-tuning imagenet) ----------------------
+GOOGLENET (from fine-tuning IMAGENET) ----------------------
 ../code/caffe/build/tools/caffe train -solver models/googlenet_resized/solver_from_imagenet.prototxt -weights models/googlenet_resized/snapshots_from_imagenet/bvlc_googlenet.caffemodel
 
+##################################################################################
+##################################################################################
+##################################################################################
+##################################################################################
 
 ############################### fine-tunning 500 ################## (From folder TFG)
 GOOGLENET ----------------------

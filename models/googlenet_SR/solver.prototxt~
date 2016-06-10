@@ -1,0 +1,19 @@
+net: "models/googlenet_SR/train_val.prototxt"
+# 14540 val --> int(14540/32.)=454
+test_iter: 454
+# 116248 train --> int(116248/4/32.)=908
+test_interval: 908
+# lr for fine-tuning should be lower than when starting from scratch
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+# decrease lr each 20000 iterations
+stepsize: 20000
+display: 20
+max_iter: 1000000
+momentum: 0.9
+weight_decay: 0.0005
+# to match with the test interval has to be a multiple of this --> 908*6=5448
+snapshot: 5448
+snapshot_prefix: "models/googlenet_SR/snapshots/ss_googlenet_SR"
+solver_mode: GPU

@@ -1,0 +1,3 @@
+Here we use:
+  - foodCAT original
+  - food101 scaled to 0.5 and using just a maximum of 500 images per class
