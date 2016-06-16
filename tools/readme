@@ -27,6 +27,7 @@ SCRIPTS /scripts/
 'scripts/stats.py' is a script that summarize the amount of classes that we have for each global category, taken as a input the json file generated
                     by 'scripts/scrapCuinaCatalana.py'
 'scripts/caffeWrapper.py' is a script
+'scripts/text_processing.py' fills the pictures names with the extension .jpg in files train.txt, val.txt, test.txt and test_just_foodCAT.txt
 
 OTHER FOLDERS
 folder 'raw_images' contains all the raw images, before clean the non related images, of the 144 classes selected.

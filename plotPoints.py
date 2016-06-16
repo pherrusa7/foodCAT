@@ -147,8 +147,8 @@ def plotFromJson():
     '''
 
     data = loadJSON( 'data_resolution_RESIZED.json' )
-    labels = {'data/food-101/resized_images': 'food-101', 'data/images': 'foodCAT'}
-    colors = {'data/food-101/resized_images': 'blue', 'data/images': 'red'}
+    labels = {'data/food-101/images': 'food-101', 'data/foodCAT_SR': 'foodCAT'}
+    colors = {'data/food-101/images': 'blue', 'data/foodCAT_SR': 'red'}
     plotChart(data, labels, colors)
     return data
 

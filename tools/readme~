@@ -15,6 +15,7 @@ DATA FILES /raw_data/
 'raw_data/selectedFoods.json' contains the selected (by Catalan people) classes that we scrapt from the website 'www.cuinacatalana.eu' with 144 different
              classes sorted by category and name
 'raw_data/foods_with_images.json' contains the classes that we could find images for them
+5. the folder 'datasets_resolutions' contains information about the image resolutions used in the differents datasets
 
 SCRIPTS /scripts/
 'scripts/findImages.py' is the script that allows as to download from google all images related to our desired dataset 'selectedFoods.json'
@@ -26,6 +27,7 @@ SCRIPTS /scripts/
 'scripts/stats.py' is a script that summarize the amount of classes that we have for each global category, taken as a input the json file generated
                     by 'scripts/scrapCuinaCatalana.py'
 'scripts/caffeWrapper.py' is a script
+'scripts/text_processing.py' fills the pictures names with the extension .jpg in files train.txt, val.txt, test.txt and test_just_foodCAT.txt
 
 OTHER FOLDERS
 folder 'raw_images' contains all the raw images, before clean the non related images, of the 144 classes selected.

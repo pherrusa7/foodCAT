@@ -37,7 +37,7 @@ import random
 
 # Target default values
 TARGET_PATH = os.getcwd()
-FOLDER = 'foodCAT_resized' # wich holds all caffe data. CHANGE THIS AND WRITE YOUR PROJECT NAME
+FOLDER = 'SR' # wich holds all caffe data. CHANGE THIS AND WRITE YOUR PROJECT NAME
 TRAIN = 'train.txt'
 VAL = 'val.txt'
 TEST = 'test.txt'

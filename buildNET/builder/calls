@@ -16,3 +16,4 @@ run buildNET.py -p '../../data/images','../../data/food-101/resized_images' -t '
 
 RESIZED BALANCED MODEL 
 run build_subNET.py -p '../../data/images','../../data/food-101/resized_images' -t '../..'
+
