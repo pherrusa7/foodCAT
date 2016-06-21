@@ -1,6 +1,7 @@
 
 import os
 import sys
+import getopt
 import caffe
 #import pdb; pdb.set_trace()
 import numpy as np
@@ -420,6 +421,36 @@ def pruebas(y_true, y_pred):
 
 
 
-if __name__ == "__main__":
+def getArgs(argv):
 
-    net = deployModel(sys.argv[1])
+    try:
+        opts, args = getopt.getopt(argv, 'm:d:')
+    except getopt.GetoptError:
+        print 'bad usage'
+        sys.exit(2)
+
+    model = ''
+    dataset = ''
+
+    # if they are, get default values
+    for opt, arg in opts:
+        #print 'opt: ',opt, ' arg: ', arg
+        if opt == "-m":
+            model = str(arg)
+        if opt == "-d":
+            dataset = str(arg)
+
+    return model, dataset
+
+
+# python caffeWrapper.py -m 'foodCAT_googlenet_food101' -d 'net_TEST'
+if __name__=='__main__':
+    '''
+        -m the model you want to deploy
+        -d the dataset you want to use
+    '''
+
+    # get paths of superClasses*, num images of train/val and target path to hold all files
+    model, dataset = getArgs( sys.argv[1:] )
+
+    fastTEST(model, dataset)
