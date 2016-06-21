@@ -90,16 +90,52 @@ allModels = {"foodCAT_alexnet":
                             "nameLayer_AccuracyTop1": 'loss3/top-1',
                             "nameLayer_AccuracyTop5": 'loss3/top-5',
                             "nameLayer_innerProduct": 'loss3/classifier_resized',
-                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/solver.prototxt")} } # solver is not used to TEST
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/solver.prototxt")}, # solver is not used to TEST
+        "googlenet_resized_from_imagenet":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/snapshots_from_imagenet/ss_from_imagenet_iter_386808.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_resized": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/test.prototxt"),
+                                            "net_TEST_resized_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/test_just_foodCAT.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_resized',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized/solver_from_imagenet.prototxt")}, # solver is not used to TEST
+        "googlenet_resized_balanced_from_imagenet":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/snapshots_from_imagenet/ss_from_imagenet_BALANCED_iter_107160.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/test.prototxt"),
+                                            "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/test_just_foodCAT.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_resized',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_resized_balanced/solver_from_imagenet.prototxt")}, # solver is not used to TEST
+        "googlenet_SR":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/snapshots/ss_googlenet_SR_iter_381360.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_resized": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/test.prototxt"),
+                                            "net_TEST_resized_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/test_just_foodCAT.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_resized',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/solver.prototxt")}, # solver is not used to TEST
+        "googlenet_SR_balanced":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR_balanced/snapshots/ss_googlenet_SR_BALANCED_iter_104880.caffemodel"),
+                            "netDefinition":
+                                            {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR_balanced/test.prototxt"),
+                                            "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR_balanced/test_just_foodCAT.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/classifier_resized',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR_balanced/solver.prototxt")} } # solver is not used to TEST
 
 # Here you need to fill all fields if you want to use another dateset (also you will need to fill the 'netDefinition' for each element in allModels dict)
 # TODO: Actually numImages we can read it automatically from the net (HOW?), and numClasses could be just the parameter 'num_classes_with_predictions', as it's calculated
 # with the ground True labels.
 allDatasets = {"net_TEST":
-                            {"numImages": 14630,
+                            {"numImages": 14630,     # NOT USEFUL ANYMORE
                             "numClasses": 218},
             "net_TEST_just_foodCAT":
-                            {"numImages": 4530,
+                            {"numImages": 4530,      # NOT USEFUL ANYMORE
                             "numClasses": 117},
             "net_TEST_balanced":
                             {"numImages": 9124,
@@ -305,6 +341,20 @@ def worst_K_classified(cm, k=6):
     # build the structure to see the labels for each classified
 
 
+
+################################## SUPER-RESOLUTION models FROM IMAGENET
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_SR', 'net_TEST_resized')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_SR', 'net_TEST_resized_just_foodCAT')
+
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_SR_balanced', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_SR_balanced', 'net_TEST_balanced_just_foodCAT')
+
+################################## resized models FROM IMAGENET
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized_from_imagenet', 'net_TEST_resized')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized_from_imagenet', 'net_TEST_resized_just_foodCAT')
+
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized_balanced_from_imagenet', 'net_TEST_balanced')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized_balanced_from_imagenet', 'net_TEST_balanced_just_foodCAT')
 
 ################################## resized models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_resized', 'net_TEST_resized')

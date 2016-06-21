@@ -1,0 +1,46 @@
+acc_top1:  0.680697161753
+acc_top5:  0.895287958115
+acc_norm_top1:  0.59078259406
+#classes Total:  216
+#classes to test:  216
+#classes with predictions:  216
+#images tested:  14516
+#images supose to test:  14516
+Confusion matrix, without normalization
+[[ 1  0  0 ...,  0  0  0]
+ [ 0 57  0 ...,  0  0  0]
+ [ 0  0 15 ...,  0  0  0]
+ ..., 
+ [ 0  0  0 ..., 79  0  4]
+ [ 0  0  0 ...,  0 87  0]
+ [ 0  0  0 ...,  1  2 87]]
+Normalized confusion matrix
+[[ 0.1   0.    0.   ...,  0.    0.    0.  ]
+ [ 0.    0.77  0.   ...,  0.    0.    0.  ]
+ [ 0.    0.    0.39 ...,  0.    0.    0.  ]
+ ..., 
+ [ 0.    0.    0.   ...,  0.79  0.    0.04]
+ [ 0.    0.    0.   ...,  0.    0.87  0.  ]
+ [ 0.    0.    0.   ...,  0.01  0.02  0.87]]
+######## diff
+t:  20.0 that is  caracoles_a_la_llauna
+p: 122 that is  pizza
+######## diff
+t:  27.0 that is  confitura_de_tomàquet
+p: 215 that is  sashimi
+######## diff
+t:  49.0 that is  brandada_de_bacallà
+p: 213 that is  sushi
+######## diff
+t:  71.0 that is  xocolata_desfeta
+p: 175 that is  macarons
+######## diff
+t:  76.0 that is  garbanzos_cocidos
+p: 127 that is  bruschetta
+######## diff
+t:  84.0 that is  romesco_de_bacallà
+p: 139 that is  grilled_salmon
+
+diff:  4635
+eq:  9881
+
