@@ -1,19 +1,17 @@
-net: "models/googlenet_SR/train_val.prototxt"
-# 14540 val --> int(14540/32.)=454
-test_iter: 454
-# 116248 train --> int(116248/4/32.)=908
-test_interval: 908
-# lr for fine-tuning should be lower than when starting from scratch
-base_lr: 0.001
-lr_policy: "step"
-gamma: 0.1
-# decrease lr each 20000 iterations
-stepsize: 20000
+net: "models/googlenet_SR/train_val.prototxt" # Net definition
+test_iter: 454                                # Number val images 14540/32. =454, 
+test_interval: 908                            # Number train images 116248/4/32. =908
+base_lr: 0.001				      # lr for fine-tuning lower than from scratch
+lr_policy: "step"                             # learning rate policy: drop the learning rate in "steps"
+					      # by a factor of gamma every stepsize iterations
+gamma: 0.1                                    # drop the learning rate by a factor of 10
+                 			      # (i.e., multiply it by a factor of gamma = 0.1)
+stepsize: 20000				      # drop the learning rate every 20K iterations
 display: 20
-max_iter: 1000000
+max_iter: 1000000                             # train for 1000K iterations total
 momentum: 0.9
-weight_decay: 0.0005
-# to match with the test interval has to be a multiple of this --> 908*6=5448
-snapshot: 5448
+weight_decay: 0.0005                          #  penalty for large weights
+snapshot: 5448				      # save after a test interval. So this value has to be
+					      # a multiple of the variable 'test_interval' (908*6=5448)
 snapshot_prefix: "models/googlenet_SR/snapshots/ss_googlenet_SR"
 solver_mode: GPU
