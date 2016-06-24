@@ -18,8 +18,8 @@ RESIZED BALANCED MODEL
 run build_subNET.py -p '../../data/images','../../data/food-101/resized_images' -t '../..'
 
 
-SR MODEL
-run buildNET.py -p '../../data/foodCAT_SR','../../data/food-101/resized_images' -t '../..'
+not used
+run buildNET.py -p '../../data/categories/caracoles'',../../data/categories/carnes'',../../data/categories/ensaladas_y_platos_frios'',../../data/categories/huevos'',../../data/categories/legumbres'',../../data/categories/pastas_arroces_y_otros_cereales'',../../data/categories/pescados_y_mariscos'',../../data/categories/postres_y_dulces'',../../data/categories/salsas'',../../data/categories/setas'',../../data/categories/sopas_caldos_y_cremas'',../../data/categories/Verduras_y_otras_hortalizas' -t '../..'
 
-SR BALANCED MODEL 
-run build_subNET.py -p '../../data/foodCAT_SR','../../data/food-101/resized_images' -t '../..'
+categories 
+run build_subNET.py -p '../../data/categories' -t '../..'

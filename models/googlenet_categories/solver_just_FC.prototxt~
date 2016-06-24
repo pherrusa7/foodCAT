@@ -1,0 +1,18 @@
+net: "models/googlenet_categories/train_val_just_FC.prototxt" # Net definition
+test_iter: 559                                # Number val images 4472/8. =559, 
+test_interval: 279                            # Number train images 35770/4/32 =279
+base_lr: 0.001				      # lr for fine-tuning lower than from scratch
+lr_policy: "step"                             # learning rate policy: drop the learning rate in "steps"
+					      # by a factor of gamma every stepsize iterations
+gamma: 0.1                                    # drop the learning rate by a factor of 10
+                 			      # (i.e., multiply it by a factor of gamma = 0.1)
+stepsize: 20000				      # drop the learning rate every 20K iterations
+display: 20
+max_iter: 1000000                             # train for 1000K iterations total
+momentum: 0.9
+weight_decay: 0.0005                          #  penalty for large weights
+snapshot: 2232				      # save after a test interval. So this value has to be
+					      # a multiple of the variable 'test_interval' (e.g. 279*8=2232)
+                                              # i.e, every 2 times the full training set
+snapshot_prefix: "models/googlenet_categories/snapshots_just_FC/ss_googlenet_categories_FC"
+solver_mode: GPU

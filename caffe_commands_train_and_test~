@@ -1,11 +1,23 @@
-FALTA
+googlenet_categories from imageNet ----------------------
+../code/caffe/build/tools/caffe train -solver models/googlenet_categories/solver.prototxt -weights models/googlenet_categories/snapshots/bvlc_googlenet.caffemodel
+
+googlenet_categories from Food-101 ----------------------
+../code/caffe/build/tools/caffe train -solver models/googlenet_categories/solver.prototxt -weights models/googlenet_categories/snapshots/foodRecognition_googlenet_finetunning_v2_1_iter_448000.caffemodel
+
+
+##################################################################################
+##################################################################################
+##################################################################################
+##################################################################################
+
+DONE
 ############################### [*****] fine-tunning SR BALANCED from Imagenet ################## (From folder TFG)
 # Resized 101 dataset from imagenet snapshot
 
 GOOGLENET ----------------------
 ../code/caffe/build/tools/caffe train -solver models/googlenet_SR_balanced/solver.prototxt -weights models/googlenet_SR_balanced/snapshots/bvlc_googlenet.caffemodel
 
-FALTA
+DONE
 ############################### [*****] fine-tunning SR from Imagenet ################## (From folder TFG)
 # Resized 101 dataset from imagenet snapshot
 
@@ -137,7 +149,7 @@ plot "log.log.test" using 1:12 title "top-5", '' using 1:11 title "top-1"
      # the value of the parameter 'snapshot' specified in the file 'solver.prototxt'
 # go the folder that contains the python script and paste there the file 'log.log.test'. Then run with 1 as the iterations, 12 as top-1 and 12 as top-5 accurazy
 ##### googlenet SR BALANCED
-python ../../../tools/scripts/get_best_accuracy_iter.py  'log.log.test'  1 11 12 5448
+python ../../../tools/scripts/get_best_accuracy_iter.py  'log.log.test'  1 11 12 2280
 ##### googlenet SR
 python ../../../tools/scripts/get_best_accuracy_iter.py  'log.log.test'  1 11 12 5448
 ##### googlenet resized from imagenet BALANCED
