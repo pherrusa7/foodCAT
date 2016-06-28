@@ -57,8 +57,8 @@ allModels = {"foodCAT_alexnet":
                             "netDefinition":
                                             {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test.prototxt"),
                                             "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT.prototxt"),
-                                            "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_OLD.prototxt"),
-                                            "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT_OLD.prototxt")},
+                                            "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_OLD.prototxt"),   # no sense, classes with diff IDS
+                                            "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_googlenet_food101_500/test_just_foodCAT_OLD.prototxt")},   # no sense, classes with diff IDS
                             "nameLayer_AccuracyTop1": 'loss3/top-1',
                             "nameLayer_AccuracyTop5": 'loss3/top-5',
                             "nameLayer_innerProduct": 'loss3/classifier_foodCAT_food101_500',
@@ -68,8 +68,9 @@ allModels = {"foodCAT_alexnet":
                             "netDefinition":
                                             {"net_TEST_balanced": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test.prototxt"),
                                             "net_TEST_balanced_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT.prototxt"),
-                                            "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_OLD.prototxt"),
-                                            "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT_OLD.prototxt")},
+                                            "net_TEST": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_OLD.prototxt"),  # no sense, classes with diff IDS
+                                            "net_TEST_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_foodCAT_OLD.prototxt"),
+                                            "test_just_food-101": os.path.join(PATH_TO_PROJECT, "models/foodCAT_VGG_ILSVRC_19_layers_500/test_just_food-101.prototxt")},  # no sense, classes with diff IDS
                             "nameLayer_AccuracyTop1": 'accuracy@1',
                             "nameLayer_AccuracyTop5": 'accuracy@5',
                             "nameLayer_innerProduct": 'fc8_foodCAT_500',
@@ -114,7 +115,8 @@ allModels = {"foodCAT_alexnet":
                             {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/snapshots/ss_googlenet_SR_iter_381360.caffemodel"),
                             "netDefinition":
                                             {"net_TEST_resized": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/test.prototxt"),
-                                            "net_TEST_resized_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/test_just_foodCAT.prototxt")},
+                                            "net_TEST_resized_just_foodCAT": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/test_just_foodCAT.prototxt"),
+                                            "test_just_food-101": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR/test_just_food-101.prototxt")},
                             "nameLayer_AccuracyTop1": 'loss3/top-1',
                             "nameLayer_AccuracyTop5": 'loss3/top-5',
                             "nameLayer_innerProduct": 'loss3/classifier_resized',
@@ -149,7 +151,10 @@ allDatasets = {"net_TEST":
                             "numClasses": 216},
             "net_TEST_resized_just_foodCAT":
                             {"numImages": 4416,
-                            "numClasses": 115}}
+                            "numClasses": 115},
+            "test_just_food-101":
+                            {"numImages": 5500,#10100,
+                            "numClasses": 101}}
 
 
 
@@ -401,8 +406,31 @@ def fastTEST(model, dataset):
     return y_true, y_pred, cm, cm_normalized
 
 
+def fastTEST_just_Food101(model, dataset):
+
+    y_true, y_pred, cm, cm_normalized  = customTEST(model, dataset)
+    diff =0
+    eq =0
+
+    for t,p in zip(y_true, y_pred):
+        if t==p:
+            eq=eq+1
+        else:
+            diff=diff+1
+            if p<=114 and t>114: # 114 are the catalan classes
+                print '######## diff'
+                print 't: ',t, 'that is ', labelsDICT[t]
+                print 'p:', p, 'that is ', labelsDICT[p]
+
+    print 'diff: ', diff
+    print 'eq: ', eq
+    return y_true, y_pred, cm, cm_normalized
+
+
 #TODO def lookUP(target_labels, current_net_labels):
 
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('foodCAT_VGG_ILSVRC_19_layers_500', 'test_just_food-101')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.fastTEST('googlenet_SR', 'test_just_food-101')
 def pruebas(y_true, y_pred):
 
     diff =0

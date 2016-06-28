@@ -147,6 +147,8 @@ set xlabel "iteratations"
 set ylabel "accuracy"
 set datafile separator ","
 plot "log.log.test" using 1:12 title "top-5", '' using 1:11 title "top-1"
+# (for VGG model)
+plot "log.log.test" using 1:5 title "top-5", '' using 1:4 title "top-1"
 
 # Well, a nice chart like the generated with the above instruction contains too much information to let you choose your best iteration.
 # Also, as in file 'solver.prototxt' you set a parameter called 'snapshot', thus, just the iteration multiples to this variable has been saved by caffe.
@@ -157,6 +159,8 @@ plot "log.log.test" using 1:12 title "top-5", '' using 1:11 title "top-1"
      # the fields you are interested to plot in that file (first give the x-axes and then a sorted y-axes, where the first that you specified will be the most important) 
      # the value of the parameter 'snapshot' specified in the file 'solver.prototxt'
 # go the folder that contains the python script and paste there the file 'log.log.test'. Then run with 1 as the iterations, 12 as top-1 and 12 as top-5 accurazy
+##### VGG> Does not work how we expect, because the parameter snapshot was not well defined in the solver
+python ../../../tools/scripts/get_best_accuracy_iter.py  'log.log.test'  1 4 5 10000
 ##### googlenet SR BALANCED
 python ../../../tools/scripts/get_best_accuracy_iter.py  'log.log.test'  1 11 12 2280
 ##### googlenet SR

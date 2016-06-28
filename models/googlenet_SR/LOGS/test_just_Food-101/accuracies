@@ -1,0 +1,29 @@
+acc_top1:  0.759607765452
+acc_top5:  0.92898177496
+acc_norm_top1:  0.759653465347
+#classes Total:  216
+#classes to test:  101
+#classes with predictions:  101
+#images tested:  10096
+#images supose to test:  10096
+Confusion matrix, without normalization
+[[ 0  0  0 ...,  0  0  0]
+ [ 0  0  0 ...,  0  0  0]
+ [ 0  0  0 ...,  0  0  0]
+ ..., 
+ [ 0  0  0 ..., 79  0  4]
+ [ 0  0  0 ...,  0 87  0]
+ [ 0  0  0 ...,  1  2 84]]
+caffeWrapper.py:327: RuntimeWarning: invalid value encountered in divide
+  cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+Normalized confusion matrix
+[[  nan   nan   nan ...,   nan   nan   nan]
+ [  nan   nan   nan ...,   nan   nan   nan]
+ [  nan   nan   nan ...,   nan   nan   nan]
+ ..., 
+ [ 0.    0.    0.   ...,  0.79  0.    0.04]
+ [ 0.    0.    0.   ...,  0.    0.87  0.  ]
+ [ 0.    0.    0.   ...,  0.01  0.02  0.88]]
+
+diff:  2427
+eq:  7669
