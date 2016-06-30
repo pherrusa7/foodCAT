@@ -15,10 +15,12 @@ TEST = os.path.join(PATH_TO_PROJECT,'foodCAT/test.txt')
 TEST_just_foodCAT = os.path.join(PATH_TO_PROJECT,'foodCAT/test_just_foodCAT.txt')
 '''
 
-# THIS DEPENDS ON THE DATASET THAT YOU ARE USING
-LABELS_FILE = os.path.join(PATH_TO_PROJECT,'foodCAT_resized/classesID.txt')
+# THIS DEPENDS ON THE DATASET THAT YOU ARE USING (uncomment the line pointing to the dataset you are using. Comment the otherself.)
+LABELS_FILE = os.path.join(PATH_TO_PROJECT,'categories/classesID.txt')   # categories
+#LABELS_FILE = os.path.join(PATH_TO_PROJECT,'foodCAT_resized/classesID.txt')  # food recognition
 labels = np.array(np.loadtxt(LABELS_FILE, str, delimiter='\t'))
 labelsDICT = dict([(literal_eval(e)[0],literal_eval(e)[1]) for e in labels])
+
 
 
 
@@ -129,7 +131,23 @@ allModels = {"foodCAT_alexnet":
                             "nameLayer_AccuracyTop1": 'loss3/top-1',
                             "nameLayer_AccuracyTop5": 'loss3/top-5',
                             "nameLayer_innerProduct": 'loss3/classifier_resized',
-                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR_balanced/solver.prototxt")} } # solver is not used to TEST
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_SR_balanced/solver.prototxt")}, # solver is not used to TEST
+        "googlenet_categories":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_categories/snapshots/ss_googlenet_categories_iter_49104.caffemodel"),
+                            "netDefinition":
+                                            {"categories": os.path.join(PATH_TO_PROJECT, "models/googlenet_categories/test.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/probabilities',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_categories/solver.prototxt")}, # solver is not used to TEST
+        "googlenet_categories_just_FC":
+                            {"caffemodel": os.path.join(PATH_TO_PROJECT, "models/googlenet_categories/snapshots_just_FC/ss_googlenet_categories_FC_iter_64728.caffemodel"),
+                            "netDefinition":
+                                            {"categories": os.path.join(PATH_TO_PROJECT, "models/googlenet_categories/test.prototxt")},
+                            "nameLayer_AccuracyTop1": 'loss3/top-1',
+                            "nameLayer_AccuracyTop5": 'loss3/top-5',
+                            "nameLayer_innerProduct": 'loss3/probabilities',
+                            "solver": os.path.join(PATH_TO_PROJECT, "models/googlenet_categories/solver.prototxt")} } # solver is not used to TEST
 
 # Here you need to fill all fields if you want to use another dateset (also you will need to fill the 'netDefinition' for each element in allModels dict)
 # TODO: Actually numImages we can read it automatically from the net (HOW?), and numClasses could be just the parameter 'num_classes_with_predictions', as it's calculated
@@ -154,7 +172,10 @@ allDatasets = {"net_TEST":
                             "numClasses": 115},
             "test_just_food-101":
                             {"numImages": 5500,#10100,
-                            "numClasses": 101}}
+                            "numClasses": 101},
+            "categories":
+                            {"numImages": 4471,
+                            "numClasses": 12}}
 
 
 
@@ -204,7 +225,24 @@ def plot_confusion_matrix(cm, labels, title='Confusion matrix', cmap=plt.cm.Blue
     tick_marks = np.arange(len(labels))
     plt.xticks(tick_marks, labels, rotation=45)
     plt.yticks(tick_marks, labels)
-    plt.tight_layout()
+    #plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+
+def plot_confusion_matrix_categoreis(cm, title='Confusion matrix', cmap=plt.cm.Blues):
+    """ cm: a Confusion matrix
+        lables: a np.array which contains in each position your labels
+    """
+    a=['Verduras y ...', 'postres y ...', 'carnes', 'huevos', 'legumbres', 'pastas y ...', 'setas', 'sopas y ...', 'ensaladas y ...', 'salsas', 'pescados y ...', 'caracoles']
+    l = ['Verduras y otras hortalizas', 'postres y dulces', 'carnes', 'huevos', 'legumbres', 'pastas arroces y otros cereales', 'setas', 'sopas caldos y cremas', 'ensaladas y platos frios', 'salsas', 'pescados y mariscos', 'caracoles']
+
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(l))
+    plt.xticks(tick_marks, a, rotation=45)
+    plt.yticks(tick_marks, l)
+    #plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
 
@@ -272,6 +310,9 @@ def accuracy_predictions_groundTruth(net, num_batches, batch_size, numClasses_to
 ##### USAGE EXAMPLE (from ipython)
 # import caffeWrapper
 
+################################## categories
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('googlenet_categories', 'categories')
+# y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('googlenet_categories_just_FC', 'categories')
 ################################## second models
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST')
 # y_true, y_pred, cm, cm_normalized  = caffeWrapper.customTEST('foodCAT_googlenet_food101_500', 'net_TEST_just_foodCAT')
@@ -316,20 +357,22 @@ def customTEST(model, dataset):
     y_true, y_pred = accuracy_predictions_groundTruth(net, num_batches, batch_size, numClasses_to_predict, nameProbsLayer, nameAccuracyTop1, nameAccuracyTop5)
 
     # Caluculate and plot the confusion matrix
-    ids = np.array([literal_eval(e)[0] for e in labels])
+    ids = np.array([literal_eval(e)[1] for e in labels]) # use [0] for ids or [1] for names
     cm = confusion_matrix(y_true, y_pred)
     np.set_printoptions(precision=2)
     print('Confusion matrix, without normalization')
     print(cm)
     plt.figure()
-    plot_confusion_matrix(cm, ids)
+    #plot_confusion_matrix(cm, ids)
+    plot_confusion_matrix_categoreis(cm)
 
     # Normalize the confusion matrix by row (i.e by the number of samples in each class)
     cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     print('Normalized confusion matrix')
     print(cm_normalized)
     plt.figure()
-    plot_confusion_matrix(cm_normalized, ids, title='Normalized confusion matrix')
+    #plot_confusion_matrix(cm_normalized, ids, title='Normalized confusion matrix')
+    plot_confusion_matrix_categoreis(cm_normalized, title='Normalized confusion matrix')
 
     # Show both confusion matrix
     plt.show()
