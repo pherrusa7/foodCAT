@@ -2,6 +2,5 @@
 
 Folder 'dataSummary' contains the plots summarizing the data used on this models
 Folder OLD Scripts, is what it looks like
-Folder 'builder', contains the script to build the fails train, val and test
 Script 'folder_stats.py' gives you the statistics of your data given the path to them.
 Script 'return_folder_stats.py' gives you the object 'dataframe' to play with it as you want.

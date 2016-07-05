@@ -17,6 +17,7 @@ DATA FILES /raw_data/
 'raw_data/foods_with_images.json' contains the classes that we could find images for them
 5. the folder 'datasets_resolutions' contains information about the image resolutions used in the differents datasets
 
+#####################
 SCRIPTS /scripts/
 'scripts/findImages.py' is the script that allows as to download from google all images related to our desired dataset 'selectedFoods.json'
 'scripts/imageRetrive.py' is the script that allows as to download as much as 1000 pictures related to a google query
@@ -28,8 +29,11 @@ SCRIPTS /scripts/
                     by 'scripts/scrapCuinaCatalana.py'
 'scripts/caffeWrapper.py' is a script
 'scripts/text_processing.py' fills the pictures names with the extension .jpg in files train.txt, val.txt, test.txt and test_just_foodCAT.txt
+'scripts/plotPoints.py' plot the images resolution for a given dataset 
+'scripts/caffe_commands_train_and_test' contains the history all commands used to train and test Caffe models
+scripts/cluster_scripts folder contains the scripts used to run the training at the cluster
 
+#####################
 OTHER FOLDERS
 folder 'raw_images' contains all the raw images, before clean the non related images, of the 144 classes selected.
-
 folder '+tools' have scripts founded on the internet to download images. Never used for this project

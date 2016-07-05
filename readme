@@ -5,14 +5,21 @@ folder 'buildNET' contains several scripts, the important ones are:
 
 folder 'data' contains the folders with the source images
 
-folder 'foodCAT' contains the files train, val and test that 'buildNET/builder/buildNET.py' creates
-
-folder 'foodCAT_OLD' same as foodCAT, but with 2 classes duplicated in both datasets
-
 folder 'models' contains the different models with which you can run caffe with our datasets
 
 folder 'utils' contains docs related to the project, examples of other networks, and theory slides of IA
 
+#################################################
+#### DIFFERENT DATASETS, containing the files train, val and test that 'buildNET/builder/buildNET.py' creates
+folder 'foodCAT_OLD' 
+folder 'foodCAT_500' 
+folder 'foodCAT_resized' 
+folder 'foodCAT_resized_balanced'
+folder 'foodCAT_SR'
+folder 'foodCAT_SR_balanced'
+folder 'categories'
+
+#################################################
 script 'caffeWrapper.py' caltulates different kinds of accuracy on differents TEST dataSets. (https://groups.google.com/forum/#!topic/caffe-users/NzKEWAFPPfI)
 	To be as general as posible script, we need to fit some args before execute:
 	modelName: Name of the model to use, in order to get the '.caffemodel' file (see definition of dict 'models' for more understanding)
@@ -23,13 +30,6 @@ script 'caffeWrapper.py' caltulates different kinds of accuracy on differents TE
 
 	Example of Usage: caffeWrapper.testAccuracy('foodCAT_googlenet_food101', 'net_TEST', 'loss3/classifier_foodCAT_googlenet_food101', 'loss3/top-1', 'loss3/top-5')
 
+#################################################
 WARNINGS (TODO: UPDATE THIS DESCRIPTION):
-    1. If you use a different machine to run caffe all the paths must be set. So, You will need to generate/modify again
-        1.1 folder 'foodCAT' by using the script 'buildNET/builder/buildNET.py' running it from the folder '/buildNET/builder/'
-            in other to generate the train, val and test txt with the current absolute path
-        1.2 'models/model_to_use/train_val.prototxt', modify absolutes path of:
-            1.2.1 In layers 'data' in param 'image_data_param'
-                modify the parameter 'source' to point to your 'foodCAT/<train or val>.txt'
-        1.3 In 'models/model_to_use/solver.prototxt', modify absolutes path of:
-            1.3.1 parameter 'net' to point to your 'models/model_to_use/train_val.prototxt'
-            1.3.2 parameter 'snapshot_prefix' to point to your folder 'models/model_to_use/snapshots'
+after use 'buildNET/builder/buildNET.py', delete the absolute path, just leave it like relative from the main folder TFG.
