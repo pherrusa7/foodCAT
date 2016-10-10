@@ -37,7 +37,7 @@ import random
 
 # Target default values
 TARGET_PATH = os.getcwd()
-FOLDER = 'categories' # wich holds all caffe data. CHANGE THIS AND WRITE YOUR PROJECT NAME
+FOLDER = 'dataset' # wich holds all caffe data. CHANGE THIS AND WRITE YOUR PROJECT NAME
 TRAIN = 'train.txt'
 VAL = 'val.txt'
 TEST = 'test.txt'
@@ -74,20 +74,20 @@ def saveList2File(path, holder):
         sys.exit(2)
 
 
-def fillNetData(idClass, elements, absClassPath): #, abstargetPathPath):
+def fillNetData(idClass, elements, relativeClassPath): #, abstargetPathPath):
     '''
         idClass: class id to identify each img in elements
         elements: list of images
-        absClassPath: absolute path to the current images holder (class)
+        absClassPath: relative path to the current images holder (class)
         (OPT) abstargetPathPath: target path to copy all images in elements
 
-        retunrs a list of string pairs: absoluteImagePath idClass
+        retunrs a list of string pairs: relativeImagePath idClass
     '''
 
     data = []
     for img in elements:
         # absolute path to current the image
-        absFilePath = os.path.join(absClassPath, img)
+        absFilePath = os.path.join(relativeClassPath, img)
 
 	'''
         # path to caffe image holder
@@ -117,6 +117,8 @@ def getDirData(path):
     dirs = {}
 
     for (root , dirnames, filenames) in dirsData:
+        # remove dummy files like .DS_Store, where split('.')[0] is empty
+        filenames = [filename for filename in filenames if filename.split('.')[0]]
         dirs[root] = filenames
         # also we replace white spaces with underline
         #dirs[root[2:].replace (' ', '_')] = [files.replace (' ', '_') for files in filenames]
@@ -189,13 +191,13 @@ def buildCaffeData(paths, targetPath):
                 testSet = images[numTrain+numVal:] #[numTrain:]
 
                 # fill train.txt
-                train += fillNetData(idClass, trainSet, os.path.abspath(clas))
+                train += fillNetData(idClass, trainSet, clas)
 
                 # fill val.txt
-                val += fillNetData(idClass, valSet, os.path.abspath(clas))
+                val += fillNetData(idClass, valSet, clas)
 
                 # fill test.txt
-                test += fillNetData(idClass, testSet, os.path.abspath(clas))
+                test += fillNetData(idClass, testSet, clas)
 
                 # for validation
                 totalClasses += 1
